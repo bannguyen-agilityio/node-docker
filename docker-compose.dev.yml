@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+ notes:
+  build:
+    context: .
+    dockerfile: Dockerfile
+    target: prod
+  ports:
+   - 3000:3000
+   - 9229:9229
+  environment:
+   - SERVER_PORT=3000
+   - CONNECTIONSTRING=mongodb://mongo:27017/notes
+  volumes:
+   - ./:/app
+  command: npm run debug
+
+ mongo:
+  image: mongo
+  ports:
+   - 27017:27017
+  volumes:
+   - mongodb:/data
+volumes:
+  mongodb:
