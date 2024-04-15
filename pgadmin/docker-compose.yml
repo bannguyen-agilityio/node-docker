@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5433:5432
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # 172.17.0.1
+    environment:
+      POSTGRES_USER: articuno
+      POSTGRES_PASSWORD: articuno
+      POSTGRES_DB: dev
+      PGDATA: /data/postgres
+
+  pgadmin:
+    image: dpage/pgadmin4:8.5
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: articuno@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: articuno
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - 8080:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # 172.17.0.1
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  postgres:
+  pgadmin:
