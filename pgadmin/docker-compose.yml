@@ -36,3 +36,6 @@ services:
 volumes:
   postgres:
   pgadmin:
+
+# pgAdmin accessing host: postgres, port 5432
+# Ouside docker accessing host: localhost, port 5433
