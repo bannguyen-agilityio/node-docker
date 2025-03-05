@@ -26,6 +26,7 @@
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
     "@storybook/addon-essentials": "^8.6.2",
     "@storybook/addon-interactions": "^8.6.2",
     "@storybook/addon-links": "^8.6.2",
