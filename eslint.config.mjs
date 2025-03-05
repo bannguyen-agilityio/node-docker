@@ -1,41 +1,47 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
 });
 
 const eslintConfig = [
   ...compat.config({
     extends: [
-      "next",
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:storybook/recommended",
+      'next',
+      'eslint:recommended',
+      'plugin:@typescript-eslint/recommended',
+      'plugin:storybook/recommended',
       'next/core-web-vitals',
-      'next/typescript'
+      'next/typescript',
     ],
     rules: {
-      "no-console": "warn",
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
+      'no-console': 'warn',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
         {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_",
-          "caughtErrorsIgnorePattern": "^_"
-        }
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
       ],
-      "react/self-closing-comp": ["warn", {
-        "component": true,
-        "html": true
-      }],
-      "@typescript-eslint/no-empty-object-type": "off"
-    }
+      'react/self-closing-comp': [
+        'warn',
+        {
+          component: true,
+          html: true,
+        },
+      ],
+      '@typescript-eslint/no-empty-object-type': 'off',
+    },
+    ignorePatterns: ['**/node_modules/', '.next/'],
   }),
 ];
 
