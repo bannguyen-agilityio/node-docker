@@ -10,11 +10,13 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "storybook": "storybook dev -p 6006",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.2",
     "@radix-ui/themes": "^3.2.1",
+    "@storybook/nextjs": "^8.6.4",
     "next": "15.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -24,6 +26,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "3.2.5",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@eslint/eslintrc": "^3.3.0",
@@ -33,7 +36,8 @@
     "@storybook/addon-interactions": "^8.6.2",
     "@storybook/addon-links": "^8.6.2",
     "@storybook/addon-onboarding": "^8.6.2",
-    "@storybook/nextjs": "^8.6.2",
+    "@storybook/blocks": "8.6.4",
+    "@storybook/experimental-addon-test": "8.6.4",
     "@storybook/react": "^8.6.2",
     "@storybook/test": "^8.6.2",
     "@tailwindcss/postcss": "^4.0.9",
@@ -50,6 +54,7 @@
     "eslint-plugin-storybook": "^0.11.3",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
+    "playwright": "^1.50.1",
     "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "storybook": "^8.6.2",
