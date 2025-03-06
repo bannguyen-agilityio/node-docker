@@ -1,17 +1,17 @@
-import { Button, Text, TextField } from '@radix-ui/themes';
+'use client';
+
+import { TextField } from '@/components';
+import { Button } from '@radix-ui/themes';
+import { useRef } from 'react';
 
 export default function Home() {
+  const ref = useRef(null);
+
   return (
     <>
       <div>Home</div>
-      <Button />
-      <TextField.Root size='3' placeholder='Reply…'>
-        <TextField.Slot side='right' px='1'></TextField.Slot>
-      </TextField.Root>
-      <Button size='2'>Send</Button>
-      <Text color='red' className='bg-amber-300'>
-        hello
-      </Text>
+      <TextField ref={ref} label='Password' id='password' />
+      <Button onClick={() => console.log(ref.current)} />
     </>
   );
 }
