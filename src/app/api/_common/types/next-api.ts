@@ -1,5 +1,5 @@
 export interface ApiContext {
-  params?: Record<string, string>;
+  params: Promise<Record<string, string>>;
 }
 
 export type ApiHandler = (
