@@ -15,11 +15,9 @@ This project is to build an application for admin dashboard.
 ## Developer tools
 
 - [husky](https://www.npmjs.com/package/husky)
-- [prettier](https://storybook.js.org/)
 - [eslint](https://eslint.org/)
 - [commitlint](https://commitlint.js.org/#/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
 - [Jest](https://jestjs.io/)
 - [React test library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Axe](https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?pli=1)
@@ -30,7 +28,6 @@ This project is to build an application for admin dashboard.
 .
 ├── README.md                       # README file
 ├── .husky                          # Husky configuration
-├── .storybook                      # Storybook folder
 ├── public                          # Public assets folder
 ├── src
 │   ├── app                         # Next.js App (App Router)
@@ -41,7 +38,6 @@ This project is to build an application for admin dashboard.
 │   ├── interfaces                  # Interfaces folder
 │   ├── mocks                       # Mocks folder
 │   ├── services                    # Services folder
-│   ├── stories                     # Storybook folder
 │   ├── styles                      # Style folder
 │   ├── themes                      # Custom themes
 │   ├── utils                       # Code Reusability
@@ -66,5 +62,4 @@ This project is to build an application for admin dashboard.
 | `$ pnpm build`     | Build app with optimized production mode   | N/A                   |
 | `$ pnpm start`     | Starts the application in production mode. | http://localhost:3000 |
 | `$ pnpm dev`       | Run the app in development mode            | http://localhost:3000 |
-| `$ pnpm storybook` | Run Storybook.                             | http://localhost:6006 |
 | `$ pnpm test`      | Run Unit Test                              | N/A                   |
