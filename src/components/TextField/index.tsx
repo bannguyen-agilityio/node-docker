@@ -78,7 +78,7 @@ const TextField = ({
         onChange={handleChangeValue}
       >
         {content && (
-          <TextFieldRadix.Slot side={positionIcon}>
+          <TextFieldRadix.Slot side={positionIcon} className='px-2'>
             {content}
           </TextFieldRadix.Slot>
         )}
