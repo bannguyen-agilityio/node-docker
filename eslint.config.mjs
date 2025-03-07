@@ -17,7 +17,6 @@ const eslintConfig = [
       'next',
       'eslint:recommended',
       'plugin:@typescript-eslint/recommended',
-      'plugin:storybook/recommended',
       'next/core-web-vitals',
       'next/typescript',
     ],
