@@ -1,10 +1,26 @@
-const Button = () => (
-  <button
-    type='button'
-    className='me-2 mb-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-  >
-    Default
-  </button>
-);
+import { Button as ButtonRadix } from '@radix-ui/themes';
+
+export interface ButtonProps
+  extends Partial<Pick<HTMLButtonElement, 'className'>> {
+  isDisable?: boolean;
+  text: string;
+  onClick?: () => void;
+  icon?: React.ReactNode;
+}
+
+const Button: React.FC<ButtonProps> = ({
+  isDisable,
+  text,
+  onClick,
+  icon,
+  className,
+}) => {
+  return (
+    <ButtonRadix onClick={onClick} disabled={isDisable} className={className}>
+      {icon && <span>{icon}</span>}
+      {text}
+    </ButtonRadix>
+  );
+};
 
 export default Button;

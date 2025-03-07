@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component renders correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-white transition cursor-pointer bg-blue-600 hover:bg-blue-700"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button Should render with default props 1`] = `
+<div>
+  <button
+    class="flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-white transition cursor-pointer bg-blue-600 hover:bg-blue-700"
+  />
+</div>
+`;

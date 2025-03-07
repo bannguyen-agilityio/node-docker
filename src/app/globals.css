@@ -1,11 +1,8 @@
-@layer radix_ui, tailwindcss;
+@import 'tailwindcss/preflight';
+@import '@radix-ui/themes/styles.css';
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
 
-@import '@radix-ui/themes/styles.css' layer(radix_ui);
-
-@layer tailwindcss {
-  @import 'tailwindcss';
-
-  .radix-themes {
-    --default-font-family: var(--font-geist-sans);
-  }
+.radix-themes {
+  --default-font-family: var(--font-geist-sans);
 }

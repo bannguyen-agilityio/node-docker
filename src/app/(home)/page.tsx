@@ -1,8 +1,8 @@
 'use client';
 
-import { TextField } from '@/components';
-import { Button } from '@radix-ui/themes';
 import { useRef } from 'react';
+import { Button, TextField } from '@/components';
+import { GearIcon } from '@radix-ui/react-icons';
 
 export default function Home() {
   const ref = useRef(null);
@@ -11,7 +11,9 @@ export default function Home() {
     <>
       <div>Home</div>
       <TextField ref={ref} label='Password' id='password' />
-      <Button onClick={() => console.log(ref.current)} />
+      <Button text='Login' />
+      <Button text='Login' isDisable />
+      <Button text='With icon' icon={<GearIcon />} />
     </>
   );
 }
