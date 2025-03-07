@@ -34,6 +34,7 @@ const TextField = ({
   startContent,
   endContent,
   placeholder,
+  errorMessage,
   label,
   id,
   ref,
@@ -82,6 +83,11 @@ const TextField = ({
           </TextFieldRadix.Slot>
         )}
       </TextFieldRadix.Root>
+      {invalid && errorMessage && (
+        <Text color='red' size='2' className='mt-2 inline-block'>
+          {errorMessage}
+        </Text>
+      )}
     </Box>
   );
 };

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField Should render with default props 1`] = `
+<div>
+  <div
+    class="rt-Box"
+  >
+    <div
+      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+      data-accent-color="indigo"
+    >
+      <input
+        class="rt-reset rt-TextFieldInput"
+        spellcheck="false"
+        type="text"
+      />
+    </div>
+  </div>
+</div>
+`;
