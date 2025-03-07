@@ -7,12 +7,7 @@ import { Box, Text, TextField as TextFieldRadix } from '@radix-ui/themes';
 import { tw } from '@/utils';
 
 // Constants
-import { Position } from '@/constants';
-
-const enum TextFieldState {
-  VALID = 'indigo',
-  INVALID = 'red',
-}
+import { Position, TextFieldState } from '@/constants';
 
 type TextFieldRadixProps = Parameters<typeof TextFieldRadix.Root>['0'];
 
