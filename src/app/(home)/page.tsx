@@ -1,8 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import { Button, Status, TextField, StatusType } from '@/components';
+import { Button, Status, TextField } from '@/components';
 import { GearIcon } from '@radix-ui/react-icons';
+import { StatusType } from '@/constants';
 
 export default function Home() {
   const ref = useRef(null);
