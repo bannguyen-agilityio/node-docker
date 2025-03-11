@@ -11,3 +11,14 @@
   height: inherit;
   padding: 10px 5px;
 }
+
+@theme {
+  --animate-sidebarSlideInAnimation: sidebarSlideInAnimation 0.3s ease-in-out
+    forwards;
+
+  @keyframes sidebarSlideInAnimation {
+    from {
+      transform: translateX(-80%);
+    }
+  }
+}
