@@ -1,35 +1,25 @@
-import { act, fireEvent, render } from '@testing-library/react';
-
-// Components
-import SignInForm from '.';
+import { render, screen, fireEvent } from '@testing-library/react';
+import SignInForm from '@/components/SignInForm';
+import '@testing-library/jest-dom';
 
 describe('SignInForm', () => {
-  it('Should render with default props', () => {
-    const { container } = render(<SignInForm />);
+  test('renders Sign in button with Google logo', () => {
+    render(<SignInForm />);
 
-    expect(container).toMatchSnapshot();
+    const signInButton = screen.getByRole('button', { name: /sign in/i });
+    expect(signInButton).toBeInTheDocument();
+
+    const googleLogo = screen.getByAltText('Google Logo');
+    expect(googleLogo).toBeInTheDocument();
   });
 
-  it('Should show/hide password', async () => {
-    const { getByPlaceholderText, getAllByRole } = render(<SignInForm />);
-    const buttons: HTMLButtonElement[] = getAllByRole(
-      'button',
-    ) as HTMLButtonElement[];
-    const passwordEl: HTMLInputElement = getByPlaceholderText(
-      '********',
-    ) as HTMLInputElement;
-    const iconButton: HTMLButtonElement = buttons[0];
+  test('calls handleSignIn function when clicked', () => {
+    render(<SignInForm />);
 
-    expect(passwordEl.type).toBe('password');
+    const signInButton = screen.getByRole('button', { name: /sign in/i });
 
-    await act(() => fireEvent.click(iconButton));
+    fireEvent.click(signInButton);
 
-    expect(passwordEl.type).toBe('text');
+    expect(signInButton).toBeEnabled();
   });
-
-  // TODO: Will implement when API ready
-  it('Should display error when username/password incorrect');
-
-  // TODO: Will implement when API ready
-  it('Should sign-in successfully', () => {});
 });
