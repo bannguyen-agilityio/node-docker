@@ -1,9 +1,14 @@
 'use client';
 
 import { useRef } from 'react';
-import { Button, Status, TextField, TotalDevices } from '@/components';
-import { GearIcon } from '@radix-ui/react-icons';
+import { Button, Status, TextField } from '@/components';
+import {
+  ExclamationTriangleIcon,
+  GearIcon,
+  MobileIcon,
+} from '@radix-ui/react-icons';
 import { StatusType } from '@/constants';
+import InfoCard from '@/components/InfoCard';
 
 export default function Home() {
   const ref = useRef(null);
@@ -32,7 +37,21 @@ export default function Home() {
         <Status status={StatusType.ENGAGEMENT} />
       </div>
       <div className='mt-20 ml-10'>
-        <TotalDevices />
+        <InfoCard
+          title='Issues'
+          value={3}
+          description='2 banned accounts, 1 failed post'
+          highlightText='Per day'
+          highlightColor='blue'
+          icon={<ExclamationTriangleIcon width={25} height={25} />}
+        />
+      </div>
+      <div className='mt-20 ml-10'>
+        <InfoCard
+          title='Total Devices'
+          value={12}
+          icon={<MobileIcon width={25} height={25} />}
+        />
       </div>
     </>
   );
