@@ -6,3 +6,8 @@
 .radix-themes {
   --default-font-family: var(--font-geist-sans);
 }
+
+.rt-TextFieldRoot {
+  height: inherit;
+  padding: 10px 5px;
+}
