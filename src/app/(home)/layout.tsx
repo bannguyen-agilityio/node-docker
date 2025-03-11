@@ -15,7 +15,7 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
       gap='5'
     >
       <Sidebar />
-      <div className='mt-5 flex-1 lg:overflow-y-auto lg:pr-5'>{children}</div>
+      <div className='flex-1 py-5 lg:overflow-y-auto lg:pr-5'>{children}</div>
     </Flex>
   );
 };
