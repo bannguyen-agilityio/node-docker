@@ -1,11 +1,11 @@
 'use client';
 
 import {
-  CalendarIcon,
+  // CalendarIcon,
   DashboardIcon,
-  ExclamationTriangleIcon,
+  // ExclamationTriangleIcon,
   ExitIcon,
-  MobileIcon,
+  // MobileIcon,
   RowsIcon,
 } from '@radix-ui/react-icons';
 import { Box, Heading, IconButton, Text } from '@radix-ui/themes';
@@ -22,6 +22,7 @@ import { tw } from '@/utils';
 // Hooks
 import { useDisclosure } from '@/hooks';
 
+// TODO: Reopen when the page is available
 const navigationLinks: {
   title: string;
   href: string;
@@ -32,21 +33,21 @@ const navigationLinks: {
     icon: <DashboardIcon />,
     href: ROUTES.DASHBOARD,
   },
-  {
-    title: 'devices',
-    icon: <MobileIcon />,
-    href: ROUTES.DEVICES,
-  },
-  {
-    title: 'schedule',
-    icon: <CalendarIcon />,
-    href: ROUTES.SCHEDULE,
-  },
-  {
-    title: 'issues',
-    icon: <ExclamationTriangleIcon />,
-    href: ROUTES.ISSUES,
-  },
+  // {
+  //   title: 'devices',
+  //   icon: <MobileIcon />,
+  //   href: ROUTES.DEVICES,
+  // },
+  // {
+  //   title: 'schedule',
+  //   icon: <CalendarIcon />,
+  //   href: ROUTES.SCHEDULE,
+  // },
+  // {
+  //   title: 'issues',
+  //   icon: <ExclamationTriangleIcon />,
+  //   href: ROUTES.ISSUES,
+  // },
 ];
 
 const Sidebar = () => {
