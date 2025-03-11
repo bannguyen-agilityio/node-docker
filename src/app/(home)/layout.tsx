@@ -10,12 +10,9 @@ interface HomeLayoutProps {
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
   return (
-    <Flex
-      className='block h-full p-5 lg:flex lg:overflow-visible lg:p-[unset]'
-      gap='5'
-    >
+    <Flex className='block h-full lg:flex lg:overflow-visible'>
       <Sidebar />
-      <div className='flex-1 py-5 lg:overflow-y-auto lg:pr-5'>{children}</div>
+      <div className='flex-1 p-5 lg:overflow-y-auto lg:pr-5'>{children}</div>
     </Flex>
   );
 };

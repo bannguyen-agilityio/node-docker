@@ -10,9 +10,7 @@ import { InfoCard, LatestIssues } from '@/components';
 export default function Home() {
   return (
     <>
-      <Heading as='h2' className='text-3xl'>
-        Dashboard
-      </Heading>
+      <Heading className='text-3xl'>Dashboard</Heading>
       <Text className='text-[var(--gray-11)]'>
         Overview of your phone automation system
       </Text>
