@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { Button, Status, TextField } from '@/components';
+import { Button, Status, TextField, TotalDevices } from '@/components';
 import { GearIcon } from '@radix-ui/react-icons';
 import { StatusType } from '@/constants';
 
@@ -30,6 +30,9 @@ export default function Home() {
         <Status status={StatusType.FAILED} />
         <Status status={StatusType.ONLINE} />
         <Status status={StatusType.ENGAGEMENT} />
+      </div>
+      <div className='mt-20 ml-10'>
+        <TotalDevices />
       </div>
     </>
   );
