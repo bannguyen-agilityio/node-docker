@@ -28,7 +28,7 @@ const SignInForm = () => {
             <Image src={googleLogo} alt='Google Logo' width={25} height={25} />
           }
           className={tw(
-            'font-regular text-md w-full cursor-pointer border border-gray-400 bg-white py-6 text-black transition-all hover:bg-gray-100 lg:text-lg',
+            'font-regular w-full cursor-pointer border border-gray-400 bg-white py-6 text-sm text-black transition-all hover:bg-gray-100 sm:text-base',
           )}
           onClick={handleSignIn}
         />
