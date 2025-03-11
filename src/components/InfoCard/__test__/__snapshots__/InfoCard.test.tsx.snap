@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoCar Component  1`] = `
+<div>
+  <div
+    class="rt-Flex rt-r-w"
+    style="--width: 400px;"
+  >
+    <div
+      class="flex w-full justify-between rounded-lg border bg-white px-5 py-10 shadow-sm"
+    >
+      <div
+        class="rt-Flex rt-r-fd-column"
+      >
+        <span
+          class="rt-Text rt-r-size-4 font-medium"
+        >
+          Title
+        </span>
+        <span
+          class="rt-Text text-3xl font-bold"
+        >
+          10
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`InfoCard Component  1`] = `
+<div>
+  <div
+    class="rt-Flex rt-r-w"
+    style="--width: 400px;"
+  >
+    <div
+      class="flex w-full justify-between rounded-lg border bg-white px-5 py-10 shadow-sm"
+    >
+      <div
+        class="rt-Flex rt-r-fd-column"
+      >
+        <span
+          class="rt-Text rt-r-size-4 font-medium"
+        >
+          Title
+        </span>
+        <span
+          class="rt-Text text-3xl font-bold"
+        >
+          10
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
