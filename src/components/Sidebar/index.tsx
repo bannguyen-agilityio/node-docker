@@ -8,7 +8,7 @@ import {
   MobileIcon,
   RowsIcon,
 } from '@radix-ui/react-icons';
-import { Box, Button, Heading, IconButton, Text } from '@radix-ui/themes';
+import { Box, Heading, IconButton, Text } from '@radix-ui/themes';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
@@ -57,6 +57,9 @@ const Sidebar = () => {
     handleClose: handleCloseSidebar,
   } = useDisclosure();
 
+  // TODO: Implement when API ready
+  const handleSignOut = () => {};
+
   return (
     <>
       <Box
@@ -79,10 +82,10 @@ const Sidebar = () => {
           onClick={(e) => e.stopPropagation()}
         >
           <Heading
-            size='5'
+            size='6'
             className='border-b-[1px] border-b-[var(--gray-6)] p-5 text-center'
           >
-            Phone Control
+            Fit Bryce Adams
           </Heading>
           <ul className='flex-1 border-b-[1px] border-b-[var(--gray-6)] p-5'>
             {navigationLinks.map(({ title, href, icon }) => {
@@ -109,16 +112,16 @@ const Sidebar = () => {
             })}
           </ul>
           <Box className='p-5'>
-            <Button
-              className='w-full cursor-pointer py-5 text-left'
-              variant='outline'
-              size='3'
+            <Box
+              className='flex w-full cursor-pointer items-center gap-3 rounded-lg border-[1px] border-[var(--gray-6)] px-3 py-2 text-left font-semibold hover:bg-[var(--accent-2)]'
+              role='button'
+              onClick={handleSignOut}
             >
               <Text as='span'>
                 <ExitIcon />
               </Text>
               <Text>Sign out</Text>
-            </Button>
+            </Box>
           </Box>
         </aside>
       </Box>

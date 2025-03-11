@@ -20,8 +20,8 @@ const InfoCard: React.FC<InfoCardProps> = ({
   highlightColor = HighlightColor.PRIMARY,
 }) => {
   return (
-    <Flex width='400px'>
-      <div className='flex w-full justify-between rounded-lg border bg-white px-5 py-10 shadow-sm'>
+    <Flex>
+      <div className='flex w-full justify-between rounded-lg border border-[var(--gray-6)] bg-white px-5 py-10 shadow-sm'>
         <Flex direction='column'>
           <Text className='font-medium' size='4'>
             {title}
