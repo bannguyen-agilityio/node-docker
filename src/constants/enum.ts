@@ -16,3 +16,10 @@ export const enum StatusType {
   OFFLINE = 'offline',
   ENGAGEMENT = 'engagement',
 }
+
+export const enum HighlightColor {
+  PRIMARY = 'blue',
+  SECONDARY = 'gray',
+  WARNING = 'red',
+  SUCCESS = 'green',
+}

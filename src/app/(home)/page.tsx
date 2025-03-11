@@ -42,7 +42,6 @@ export default function Home() {
           value={3}
           description='2 banned accounts, 1 failed post'
           highlightText='Per day'
-          highlightColor='blue'
           icon={<ExclamationTriangleIcon width={25} height={25} />}
         />
       </div>
