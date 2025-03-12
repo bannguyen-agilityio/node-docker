@@ -3,6 +3,9 @@ import { Flex, Text } from '@radix-ui/themes';
 // Constants
 import { HighlightColor } from '@/constants';
 
+// Utils
+import { delayResponse } from '@/utils';
+
 interface InfoCardProps {
   title: string;
   value: string | number;
@@ -10,10 +13,9 @@ interface InfoCardProps {
   icon?: React.ReactNode;
   highlightText?: string;
   highlightColor?: HighlightColor;
-  isLoading?: boolean;
 }
 
-const InfoCard: React.FC<InfoCardProps> = ({
+const InfoCard: React.FC<InfoCardProps> = async ({
   title,
   value,
   description,
@@ -21,6 +23,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
   highlightText,
   highlightColor = HighlightColor.PRIMARY,
 }) => {
+  await delayResponse(123);
   return (
     <Flex
       className='w-full rounded-lg border border-[var(--gray-6)] bg-white px-5 py-10 shadow-sm'
