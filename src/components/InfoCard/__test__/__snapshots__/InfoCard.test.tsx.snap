@@ -1,56 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InfoCar Component  1`] = `
+exports[`InfoCard Component matches snapshot 1`] = `
 <div>
   <div
-    class="rt-Flex rt-r-w"
-    style="--width: 400px;"
+    class="rt-Flex rt-r-ai-start w-full rounded-lg border border-[var(--gray-6)] bg-white px-5 py-10 shadow-sm"
   >
     <div
-      class="flex w-full justify-between rounded-lg border bg-white px-5 py-10 shadow-sm"
+      class="rt-Flex rt-r-fd-column flex-1"
     >
-      <div
-        class="rt-Flex rt-r-fd-column"
+      <span
+        class="rt-Text rt-r-size-4 flex items-center gap-2 font-medium"
       >
-        <span
-          class="rt-Text rt-r-size-4 font-medium"
-        >
-          Title
-        </span>
-        <span
-          class="rt-Text text-3xl font-bold"
-        >
-          10
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`InfoCard Component  1`] = `
-<div>
-  <div
-    class="rt-Flex rt-r-w"
-    style="--width: 400px;"
-  >
-    <div
-      class="flex w-full justify-between rounded-lg border bg-white px-5 py-10 shadow-sm"
-    >
-      <div
-        class="rt-Flex rt-r-fd-column"
+        Title
+      </span>
+      <span
+        class="rt-Text text-3xl font-bold"
       >
-        <span
-          class="rt-Text rt-r-size-4 font-medium"
-        >
-          Title
-        </span>
-        <span
-          class="rt-Text text-3xl font-bold"
-        >
-          10
-        </span>
-      </div>
+        10
+      </span>
     </div>
   </div>
 </div>

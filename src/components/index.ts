@@ -5,3 +5,4 @@ export { default as SignInForm } from './SignInForm';
 export { default as InfoCard } from './InfoCard';
 export { default as LatestIssues } from './LatestIssues';
 export { default as Sidebar } from './Sidebar';
+export { default as Skeleton } from './Skeleton';

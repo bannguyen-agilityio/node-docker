@@ -1,11 +1,14 @@
 import { ExclamationTriangleIcon, MobileIcon } from '@radix-ui/react-icons';
 import { Box, Grid, Heading, Text } from '@radix-ui/themes';
+import { Suspense } from 'react';
 
 // Constants
 import { HighlightColor } from '@/constants';
 
 // Components
-import { InfoCard, LatestIssues } from '@/components';
+import { InfoCard, LatestIssues, Skeleton } from '@/components';
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
@@ -15,11 +18,14 @@ export default function Home() {
         Overview of your phone automation system
       </Text>
       <Grid className='mt-5 grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3'>
-        <InfoCard
-          title='Total Devices'
-          value={12}
-          icon={<MobileIcon width='20' height='20' />}
-        />
+        <Suspense fallback={<Skeleton />}>
+          <InfoCard
+            title='Total Devices'
+            value={12}
+            icon={<MobileIcon width='20' height='20' />}
+          />
+        </Suspense>
+
         <InfoCard
           title='Issues'
           highlightColor={HighlightColor.PRIMARY}
@@ -30,7 +36,9 @@ export default function Home() {
         />
       </Grid>
       <Box mt='5'>
-        <LatestIssues />
+        <Suspense fallback={<Skeleton className='h-20 w-full' />}>
+          <LatestIssues />
+        </Suspense>
       </Box>
     </>
   );

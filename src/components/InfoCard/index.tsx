@@ -1,5 +1,6 @@
 import { Flex, Text } from '@radix-ui/themes';
 
+// Constants
 import { HighlightColor } from '@/constants';
 
 interface InfoCardProps {
@@ -9,6 +10,7 @@ interface InfoCardProps {
   icon?: React.ReactNode;
   highlightText?: string;
   highlightColor?: HighlightColor;
+  isLoading?: boolean;
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({
