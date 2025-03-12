@@ -8,9 +8,6 @@ import { Status } from '@/components';
 // Constants
 import { ROUTES, StatusType } from '@/constants';
 
-// Utils
-import { delayResponse } from '@/utils';
-
 // TODO: Will used when integrate API
 const _status: Record<'failed' | 'banned', StatusType> = {
   banned: StatusType.BANNED,
@@ -18,9 +15,7 @@ const _status: Record<'failed' | 'banned', StatusType> = {
 };
 
 // TODO: This is the mock value, and it will be updated dynamically later
-const LatestIssues = async () => {
-  await delayResponse(123);
-
+const LatestIssues = () => {
   return (
     <Box p='5' className='rounded-lg border border-[var(--gray-6)] shadow-sm'>
       <Flex align='center' gap='5'>
