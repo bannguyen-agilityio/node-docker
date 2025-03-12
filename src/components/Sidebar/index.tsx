@@ -10,8 +10,9 @@ import {
 } from '@radix-ui/react-icons';
 import { Box, Flex, IconButton, Text } from '@radix-ui/themes';
 import Link from 'next/link';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 // Constants
 import { ROUTES } from '@/constants';
@@ -51,6 +52,7 @@ const navigationLinks: {
 ];
 
 const Sidebar = () => {
+  const router = useRouter();
   const pathname: string = usePathname();
   const {
     isOpen,
@@ -59,7 +61,9 @@ const Sidebar = () => {
   } = useDisclosure();
 
   // TODO: Implement when API ready
-  const handleSignOut = () => {};
+  const handleSignOut = useCallback(() => {
+    router.push('/sign-in');
+  }, [router]);
 
   return (
     <>
