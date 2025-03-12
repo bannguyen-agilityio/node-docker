@@ -70,6 +70,7 @@ const Sidebar = () => {
             hidden: !isOpen,
           },
         )}
+        role='presentation'
         onClick={handleCloseSidebar}
       >
         <aside
