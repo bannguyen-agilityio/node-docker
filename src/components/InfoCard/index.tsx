@@ -1,8 +1,5 @@
 import { Flex, Text } from '@radix-ui/themes';
 
-// Constants
-import { HighlightColor } from '@/constants';
-
 // Utils
 import { delayResponse } from '@/utils';
 
@@ -12,7 +9,6 @@ interface InfoCardProps {
   description?: string;
   icon?: React.ReactNode;
   highlightText?: string;
-  highlightColor?: HighlightColor;
 }
 
 const InfoCard: React.FC<InfoCardProps> = async ({
@@ -21,7 +17,6 @@ const InfoCard: React.FC<InfoCardProps> = async ({
   description,
   icon,
   highlightText,
-  highlightColor = HighlightColor.PRIMARY,
 }) => {
   await delayResponse(123);
   return (
@@ -37,7 +32,7 @@ const InfoCard: React.FC<InfoCardProps> = async ({
         >
           {title}
           {highlightText && (
-            <Text as='span' color={highlightColor} size='2'>
+            <Text as='span' size='2'>
               {highlightText}
             </Text>
           )}

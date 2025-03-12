@@ -27,12 +27,15 @@ const LatestIssues = async () => {
         <Heading as='h4' className='flex-1'>
           Recent Issues
         </Heading>
-        <Link href={ROUTES.ISSUES} className='text-sm text-[var(--accent-11)]'>
+        <Link
+          href={ROUTES.ISSUES}
+          className='text-sm text-[var(--accent-11)] capitalize'
+        >
           View more
         </Link>
       </Flex>
       <Text className='md:text-md text-sm text-[var(--gray-11)]'>
-        Latest problems that need attention
+        Latest issues that need attention
       </Text>
       <ul className='mt-5 flex flex-col gap-5'>
         {Array.from({ length: 5 }).map((_, index) => {
@@ -41,17 +44,20 @@ const LatestIssues = async () => {
           return (
             <li key={index}>
               <Flex align='center' gap='5'>
-                <Flex className='flex-1' align='center' gap='5'>
-                  <Status
-                    status={isBanned ? StatusType.BANNED : StatusType.FAILED}
-                  />
-                  <Text className='line-clamp-1 font-semibold'>{`@accountname ${isBanned ? 'has been banned' : 'has been failed to post content'}`}</Text>
+                <Flex className='flex-1' align='center' gap='3'>
+                  <Box className='w-24'>
+                    <Status
+                      className='md:text-md inline-block w-full text-center text-sm'
+                      status={isBanned ? StatusType.BANNED : StatusType.FAILED}
+                    />
+                  </Box>
+                  <Text className='line-clamp-1 flex-1 font-semibold'>{`The account @accountname ${isBanned ? 'has been banned' : 'has been failed to post content'}`}</Text>
                 </Flex>
                 <Text
                   as='span'
                   className='md:text-md text-sm text-[var(--gray-11)]'
                 >
-                  2h ago
+                  2 hours ago
                 </Text>
               </Flex>
             </li>

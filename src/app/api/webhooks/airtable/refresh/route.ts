@@ -5,9 +5,8 @@ import { ContainerIds, getContainer } from '@api/_common/db';
 
 import { refreshAirtableWebhook } from '../../service';
 
-const settingsContainer = await getContainer(ContainerIds.SETTINGS);
-
 const refreshAirtableWebhookHandler: ApiHandler = async (req) => {
+  const settingsContainer = await getContainer(ContainerIds.SETTINGS);
   const result = await refreshAirtableWebhook(settingsContainer);
 
   return sendSuccessResponse(req, 200, result);
