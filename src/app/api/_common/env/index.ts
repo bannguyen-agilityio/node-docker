@@ -3,12 +3,13 @@ import z from 'zod';
 import { logError } from '../logger';
 
 const envSchema = z.object({
-  IS_DEBUGGING: z.string().trim().min(1),
+  IS_DEBUGGING: z.string().optional(),
   AIRTABLE_API_KEY: z.string().trim().min(1),
   AIRTABLE_WEBHOOK_URL: z.string().trim().min(1),
   AIRTABLE_BASE_ID: z.string().trim().min(1),
   AIRTABLE_POSTS_TABLE_NAME: z.string().trim().min(1),
   AIRTABLE_NOTIFICATION_URL: z.string().trim().min(1),
+  AIRTABLE_WEBHOOK_MAC_SECRET: z.string().trim().min(1),
   DB_ENDPOINT: z.string().trim().min(1),
   DB_KEY: z.string().trim().min(1),
 });
@@ -20,6 +21,7 @@ const envParsed = envSchema.safeParse({
   AIRTABLE_BASE_ID: process.env.AIRTABLE_BASE_ID,
   AIRTABLE_POSTS_TABLE_NAME: process.env.AIRTABLE_POSTS_TABLE_NAME,
   AIRTABLE_NOTIFICATION_URL: process.env.AIRTABLE_NOTIFICATION_URL,
+  AIRTABLE_WEBHOOK_MAC_SECRET: process.env.AIRTABLE_WEBHOOK_MAC_SECRET,
   DB_ENDPOINT: process.env.DB_ENDPOINT,
   DB_KEY: process.env.DB_KEY,
 });
