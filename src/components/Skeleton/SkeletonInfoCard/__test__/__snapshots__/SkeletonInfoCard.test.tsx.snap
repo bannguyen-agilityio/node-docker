@@ -9,13 +9,13 @@ exports[`InfoCardSkeleton renders correctly and matches snapshot 1`] = `
       class="rt-Flex rt-r-fd-column flex-1 space-y-3"
     >
       <div
-        class="h-5 w-32 animate-pulse rounded bg-gray-200"
+        class="h-5 w-80 animate-pulse rounded bg-gray-200"
       />
       <div
-        class="h-8 w-20 animate-pulse rounded bg-gray-200"
+        class="h-8 w-60 animate-pulse rounded bg-gray-200"
       />
       <div
-        class="h-4 w-40 animate-pulse rounded bg-gray-200"
+        class="h-4 w-100 animate-pulse rounded bg-gray-200"
       />
     </div>
     <div

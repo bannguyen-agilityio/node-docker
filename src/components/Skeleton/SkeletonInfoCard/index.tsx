@@ -7,9 +7,9 @@ const InfoCardSkeleton: React.FC = () => {
       align='start'
     >
       <Flex direction='column' className='flex-1 space-y-3'>
-        <div className='h-5 w-32 animate-pulse rounded bg-gray-200' />
-        <div className='h-8 w-20 animate-pulse rounded bg-gray-200' />
-        <div className='h-4 w-40 animate-pulse rounded bg-gray-200' />
+        <div className='h-5 w-80 animate-pulse rounded bg-gray-200' />
+        <div className='h-8 w-60 animate-pulse rounded bg-gray-200' />
+        <div className='h-4 w-100 animate-pulse rounded bg-gray-200' />
       </Flex>
       <div className='h-10 w-10 animate-pulse rounded-full bg-gray-200' />
     </Flex>
