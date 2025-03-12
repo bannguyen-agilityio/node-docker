@@ -8,8 +8,14 @@ import { Status } from '@/components';
 // Constants
 import { ROUTES, StatusType } from '@/constants';
 
+// TODO: Will used when integrate API
+const _status: Record<'failed' | 'banned', StatusType> = {
+  banned: StatusType.BANNED,
+  failed: StatusType.FAILED,
+};
+
 // TODO: This is the mock value, and it will be updated dynamically later
-const IssueList = () => {
+const LatestIssues = () => {
   return (
     <Box p='5' className='rounded-lg border border-[var(--gray-6)] shadow-sm'>
       <Flex align='center' gap='5'>
@@ -51,4 +57,4 @@ const IssueList = () => {
   );
 };
 
-export default IssueList;
+export default LatestIssues;
