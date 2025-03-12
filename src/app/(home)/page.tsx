@@ -4,8 +4,6 @@ import { Box, Grid, Heading, Text } from '@radix-ui/themes';
 // Components
 import { InfoCard, LatestIssues } from '@/components';
 
-export const dynamic = 'force-dynamic';
-
 export default function Home() {
   return (
     <>
