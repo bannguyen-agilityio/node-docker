@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 import { HighlightColor } from '@/constants';
 
 // Components
-import { InfoCard, LatestIssues, Skeleton } from '@/components';
+import { InfoCard, LatestIssues, LatestIssuesSkeleton } from '@/components';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,13 +18,11 @@ export default function Home() {
         Overview of your phone automation system
       </Text>
       <Grid className='mt-5 grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3'>
-        <Suspense fallback={<Skeleton />}>
-          <InfoCard
-            title='Total Devices'
-            value={12}
-            icon={<MobileIcon width='20' height='20' />}
-          />
-        </Suspense>
+        <InfoCard
+          title='Total Devices'
+          value={12}
+          icon={<MobileIcon width='20' height='20' />}
+        />
 
         <InfoCard
           title='Issues'
@@ -36,7 +34,7 @@ export default function Home() {
         />
       </Grid>
       <Box mt='5'>
-        <Suspense fallback={<Skeleton className='h-20 w-full' />}>
+        <Suspense fallback={<LatestIssuesSkeleton />}>
           <LatestIssues />
         </Suspense>
       </Box>
