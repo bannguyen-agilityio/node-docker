@@ -1,8 +1,8 @@
 'use client';
-import googleLogo from '../../../public/images/signin-google-image.svg.webp';
 import { Box, Flex, Heading } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 
 // Utils
 import { tw } from '@/utils/tailwind';
@@ -11,8 +11,11 @@ import { tw } from '@/utils/tailwind';
 import { Button } from '..';
 
 const SignInForm = () => {
-  // TODO: Will implement when API is ready
-  const handleSignIn = useCallback(() => {}, []);
+  const router = useRouter();
+
+  const handleSignIn = useCallback(() => {
+    router.push('/');
+  }, [router]);
 
   return (
     <Flex direction='column' gap='4' width='400px'>
@@ -25,7 +28,12 @@ const SignInForm = () => {
         <Button
           text='Sign in with Google'
           icon={
-            <Image src={googleLogo} alt='Google Logo' width={25} height={25} />
+            <Image
+              src='/images/signin-google-image.svg.webp'
+              alt='Google Logo'
+              width={25}
+              height={25}
+            />
           }
           className={tw(
             'font-regular w-full cursor-pointer border border-gray-400 bg-white py-6 text-sm text-black transition-all hover:bg-gray-100 sm:text-base',
