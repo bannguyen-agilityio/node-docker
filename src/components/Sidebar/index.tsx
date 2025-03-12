@@ -75,7 +75,7 @@ const Sidebar = () => {
       >
         <aside
           className={tw(
-            'animate-sidebarSlideInAnimation absolute z-30 h-full flex-col border-[var(--gray-6)] bg-white shadow-2xl lg:static lg:flex lg:animate-none lg:border-r-[1px] lg:shadow-none',
+            'animate-sidebarSlideInAnimation absolute z-30 h-full flex-col border-[var(--gray-6)] bg-white shadow-2xl lg:static lg:flex lg:animate-none lg:border-r',
             {
               hidden: !isOpen,
               flex: isOpen,
@@ -123,7 +123,7 @@ const Sidebar = () => {
               <Text as='span'>
                 <ExitIcon />
               </Text>
-              <Text>Sign out</Text>
+              <Text className='capitalize'>Sign out</Text>
             </Flex>
           </Box>
         </aside>
