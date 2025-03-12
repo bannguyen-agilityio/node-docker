@@ -16,6 +16,9 @@ const _status: Record<'failed' | 'banned', StatusType> = {
 
 // TODO: This is the mock value, and it will be updated dynamically later
 const LatestIssues = () => {
+  const issues = Array.from({ length: 5 });
+  const isNoIssues: boolean = !issues.length;
+
   return (
     <Box p='5' className='rounded-lg border border-[var(--gray-6)] shadow-sm'>
       <Flex align='center' gap='5'>
@@ -32,33 +35,42 @@ const LatestIssues = () => {
       <Text className='md:text-md text-sm text-[var(--gray-11)]'>
         Latest issues that need attention
       </Text>
-      <ul className='mt-5 flex flex-col gap-5'>
-        {Array.from({ length: 5 }).map((_, index) => {
-          const isBanned: boolean = index % 2 === 0;
 
-          return (
-            <li key={index}>
-              <Flex align='center' gap='5'>
-                <Flex className='flex-1' align='center' gap='3'>
-                  <Box className='w-24'>
-                    <Status
-                      className='md:text-md inline-block w-full text-center text-sm'
-                      status={isBanned ? StatusType.BANNED : StatusType.FAILED}
-                    />
-                  </Box>
-                  <Text className='line-clamp-1 flex-1 font-semibold'>{`The account @accountname ${isBanned ? 'has been banned' : 'has been failed to post content'}`}</Text>
+      {!isNoIssues ? (
+        <ul className='mt-5 flex flex-col gap-5'>
+          {issues.map((_, index) => {
+            const isBanned: boolean = index % 2 === 0;
+
+            return (
+              <li key={index}>
+                <Flex align='center' gap='5'>
+                  <Flex className='flex-1' align='center' gap='3'>
+                    <Box className='w-24'>
+                      <Status
+                        className='md:text-md inline-block w-full text-center text-sm'
+                        status={
+                          isBanned ? StatusType.BANNED : StatusType.FAILED
+                        }
+                      />
+                    </Box>
+                    <Text className='line-clamp-1 flex-1 font-semibold'>{`The account @accountname ${isBanned ? 'has been banned by Instagram.' : 'has failed to post content.'}`}</Text>
+                  </Flex>
+                  <Text
+                    as='span'
+                    className='md:text-md text-sm text-[var(--gray-11)]'
+                  >
+                    2 hours ago
+                  </Text>
                 </Flex>
-                <Text
-                  as='span'
-                  className='md:text-md text-sm text-[var(--gray-11)]'
-                >
-                  2 hours ago
-                </Text>
-              </Flex>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <Flex className='h-60' justify='center' align='center'>
+          <Text>No issues yet.</Text>
+        </Flex>
+      )}
     </Box>
   );
 };
