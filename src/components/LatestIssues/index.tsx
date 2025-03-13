@@ -8,12 +8,6 @@ import { Status } from '@/components';
 // Constants
 import { ROUTES, StatusType } from '@/constants';
 
-// TODO: Will used when integrate API
-const _status: Record<'failed' | 'banned', StatusType> = {
-  banned: StatusType.BANNED,
-  failed: StatusType.FAILED,
-};
-
 // TODO: This is the mock value, and it will be updated dynamically later
 const LatestIssues = () => {
   const issues = Array.from({ length: 5 });
