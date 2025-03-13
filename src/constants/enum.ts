@@ -23,3 +23,7 @@ export const enum HighlightColor {
   WARNING = 'red',
   SUCCESS = 'green',
 }
+
+export const enum MediaPlatform {
+  INSTAGRAM = 'Instagram',
+}
