@@ -1,17 +1,16 @@
 import { ExclamationTriangleIcon, MobileIcon } from '@radix-ui/react-icons';
-import { Box, Grid, Heading, Text } from '@radix-ui/themes';
+import { Box, Grid } from '@radix-ui/themes';
 
 // Components
-import { InfoCard, LatestIssues } from '@/components';
+import { InfoCard, LatestIssues, PageHeading } from '@/components';
 
 export default function Home() {
   return (
-    <>
-      <Heading className='text-3xl'>Dashboard</Heading>
-      <Text className='text-[var(--gray-11)]'>
-        Overview of your phone automation system
-      </Text>
-      <Grid className='mt-5 grid-cols-1 gap-5 md:grid-cols-2'>
+    <PageHeading
+      title='Dashboard'
+      subTitle='Overview of your phone automation system'
+    >
+      <Grid className='grid-cols-1 gap-5 md:grid-cols-2'>
         <InfoCard
           title='Total Devices'
           value={12}
@@ -28,6 +27,6 @@ export default function Home() {
       <Box mt='5'>
         <LatestIssues />
       </Box>
-    </>
+    </PageHeading>
   );
 }
