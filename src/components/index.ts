@@ -11,3 +11,4 @@ export { default as IssueReporting } from './IssueReporting';
 export { default as PageHeading } from './PageHeading';
 export { default as Pagination } from './Pagination';
 export { default as PageSizeSelector } from './PageSizeSelector';
+export { default as IssueReportingSkeleton } from './Skeleton/IssueReportingSkeleton';
