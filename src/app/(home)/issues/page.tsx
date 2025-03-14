@@ -2,10 +2,10 @@ import React from 'react';
 import { Box, Flex, Text } from '@radix-ui/themes';
 
 // Components
-import { IssueReporting, PageHeading, Pagination } from '@/components';
+import { IssuesReporting, PageHeading, Pagination } from '@/components';
 
 // Constants
-import { GENERAL_MESSAGES, StatusType } from '@/constants';
+import { GENERAL_MESSAGES } from '@/constants';
 
 // Utils
 import { getPageSize } from '@/utils';
@@ -27,18 +27,7 @@ const IssuesPage = () => {
         </Flex>
       ) : (
         <Box>
-          {/* IssuesReporting component*/}
-          <Flex direction='column' gap='4' align='start'>
-            {issues.map((_, index) => (
-              <IssueReporting
-                key={index}
-                account='@travel_photos'
-                device='Iphone 14'
-                status={index % 2 === 0 ? StatusType.BANNED : StatusType.FAILED} // TODO: Will replace to status response from BE
-              />
-            ))}
-          </Flex>
-          {/* Pagination component */}
+          <IssuesReporting issues={issues} />
           <Box mt='5'>
             <Pagination totalPage={totalPages} currentPage={1} />
           </Box>
