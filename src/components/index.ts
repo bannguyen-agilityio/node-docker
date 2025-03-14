@@ -7,3 +7,7 @@ export { default as LatestIssues } from './LatestIssues';
 export { default as Sidebar } from './Sidebar';
 export { default as LatestIssuesSkeleton } from './Skeleton/SkeletonLatestIssues';
 export { default as InfoCardSkeleton } from './Skeleton/SkeletonInfoCard';
+export { default as IssueReporting } from './IssueReporting';
+export { default as PageHeading } from './PageHeading';
+export { default as Pagination } from './Pagination';
+export { default as PageSizeSelector } from './PageSizeSelector';

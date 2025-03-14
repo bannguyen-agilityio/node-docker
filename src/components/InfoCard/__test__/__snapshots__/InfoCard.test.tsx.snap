@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InfoCard Component matches snapshot 1`] = `<div />`;
+exports[`InfoCard Component matches snapshot 1`] = `
+<div>
+  <div
+    class="rt-Flex rt-r-ai-start w-full rounded-lg border border-[var(--gray-6)] bg-white px-5 py-10 shadow-sm"
+  >
+    <div
+      class="rt-Flex rt-r-fd-column flex-1"
+    >
+      <span
+        class="rt-Text rt-r-size-4 flex items-center gap-2 font-medium"
+      >
+        Title
+      </span>
+      <span
+        class="rt-Text text-3xl font-bold"
+      >
+        10
+      </span>
+    </div>
+  </div>
+</div>
+`;

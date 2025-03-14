@@ -12,7 +12,7 @@ import { ISSUE_STATUS, MediaPlatform } from '@/constants';
 import { Status } from '@/components';
 
 // Utils
-import { getIssueDetails } from '@/utils';
+import { delayResponse, getIssueDetails } from '@/utils';
 
 interface IssueReportingProps {
   status: keyof typeof ISSUE_STATUS;
@@ -31,7 +31,7 @@ const icons: Record<keyof typeof ISSUE_STATUS, ReactNode> = {
   ),
 };
 
-const IssueReporting = ({
+const IssueReporting = async ({
   account,
   device,
   status,
@@ -42,7 +42,7 @@ const IssueReporting = ({
     status: status,
     mediaPlatform,
   });
-
+  await delayResponse(123);
   return (
     <Flex
       className='w-full flex-1 rounded-lg border border-[var(--gray-6)] p-4 lg:p-5'
