@@ -3,7 +3,7 @@
 import {
   // CalendarIcon,
   DashboardIcon,
-  // ExclamationTriangleIcon,
+  ExclamationTriangleIcon,
   ExitIcon,
   // MobileIcon,
   RowsIcon,
@@ -44,11 +44,11 @@ const navigationLinks: {
   //   icon: <CalendarIcon />,
   //   href: ROUTES.SCHEDULE,
   // },
-  // {
-  //   title: 'issues',
-  //   icon: <ExclamationTriangleIcon />,
-  //   href: ROUTES.ISSUES,
-  // },
+  {
+    title: 'issues',
+    icon: <ExclamationTriangleIcon />,
+    href: ROUTES.ISSUES,
+  },
 ];
 
 const Sidebar = () => {

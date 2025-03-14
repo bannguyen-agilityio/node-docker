@@ -1,0 +1,5 @@
+export const PAGE_SIZE_OPTIONS = [
+  { label: '20', value: '20' },
+  { label: '30', value: '30' },
+  { label: '40', value: '40' },
+];
