@@ -10,13 +10,9 @@ import { checkGroupAccess, verifyEmailDomain } from '@/utils';
 // Services
 import { fetchGroupsByEmail } from '@/services';
 
-interface SignInType
-  extends Omit<Parameters<CallbacksOptions['signIn']>['0'], 'profile'> {
-  profile?: Profile &
-    Partial<{
-      email_verified: string;
-      email: string;
-    }>;
+interface SignInCallbackParameters
+  extends Omit<Parameters<CallbacksOptions['signIn']>[0], 'profile'> {
+  profile?: Profile & Partial<Record<'email_verified' | 'email', string>>;
 }
 
 export const authOptions: NextAuthOptions = {
@@ -31,7 +27,10 @@ export const authOptions: NextAuthOptions = {
     error: ROUTES.SIGN_IN,
   },
   callbacks: {
-    signIn: async ({ account, profile }: SignInType): Promise<boolean> => {
+    signIn: async ({
+      account,
+      profile,
+    }: SignInCallbackParameters): Promise<boolean> => {
       if (account?.provider === 'google') {
         const email: string = profile?.email ?? '';
 
