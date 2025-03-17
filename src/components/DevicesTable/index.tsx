@@ -1,5 +1,8 @@
 import { Table } from '@radix-ui/themes';
 
+// Constants
+import { ACCOUNT_STATUS } from '@/constants';
+
 // Components
 import { DeviceTableRow } from '@/components';
 
@@ -33,9 +36,9 @@ const DevicesTable = ({ devices }: DevicesTableProps) => {
             id={1}
             name='Device 1'
             model='IPhone 14 Pro Max'
-            platForm='Instagram'
+            platform='Instagram'
             accountName='user1'
-            status='active'
+            status={ACCOUNT_STATUS.active}
           />
         ))}
       </Table.Body>

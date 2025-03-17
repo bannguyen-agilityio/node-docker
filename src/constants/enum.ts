@@ -27,3 +27,13 @@ export const enum HighlightColor {
 export const enum MediaPlatform {
   INSTAGRAM = 'Instagram',
 }
+
+export const enum AccountStatus {
+  ACTIVE = StatusType.ACTIVE,
+  BANNED = StatusType.BANNED,
+}
+
+export const enum IssueStatus {
+  BANNED = StatusType.BANNED,
+  FAILED = StatusType.FAILED,
+}

@@ -6,7 +6,7 @@ import { Box, Flex, Heading, Text } from '@radix-ui/themes';
 import React, { ReactNode } from 'react';
 
 // Constants
-import { ISSUE_STATUS, MediaPlatform } from '@/constants';
+import { ISSUE_STATUS, IssueStatus, MediaPlatform } from '@/constants';
 
 // Components
 import { Status } from '@/components';
@@ -15,7 +15,7 @@ import { Status } from '@/components';
 import { getIssueDetails } from '@/utils';
 
 interface IssueReportingProps {
-  status: keyof typeof ISSUE_STATUS;
+  status: IssueStatus;
   device: string;
   account: string;
   time?: Date | string; // TODO: Will update when API ready

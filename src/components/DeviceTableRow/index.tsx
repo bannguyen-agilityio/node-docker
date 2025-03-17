@@ -1,7 +1,7 @@
 import { Table, Switch } from '@radix-ui/themes';
 
 // Constants
-import { ACCOUNT_STATUS } from '@/constants';
+import { AccountStatus, MediaPlatform } from '@/constants';
 
 // Components
 import { Status } from '@/components';
@@ -10,16 +10,16 @@ interface DeviceTableRowProps {
   id: number;
   name: string;
   model: string;
-  platForm: string;
+  platform: string;
   accountName: string;
-  status: keyof typeof ACCOUNT_STATUS;
+  status: AccountStatus;
 }
 
 const DeviceTableRow = ({
   id,
   name,
   model,
-  platForm,
+  platform = MediaPlatform.INSTAGRAM,
   accountName,
   status,
 }: DeviceTableRowProps) => {
@@ -28,10 +28,10 @@ const DeviceTableRow = ({
       <Table.RowHeaderCell>{id}</Table.RowHeaderCell>
       <Table.Cell>{name}</Table.Cell>
       <Table.Cell>{model}</Table.Cell>
-      <Table.RowHeaderCell>{platForm}</Table.RowHeaderCell>
+      <Table.RowHeaderCell>{platform}</Table.RowHeaderCell>
       <Table.Cell>{accountName}</Table.Cell>
       <Table.Cell className='text-center'>
-        <Status status={ACCOUNT_STATUS[status]} />
+        <Status status={status} />
       </Table.Cell>
       <Table.Cell className='text-center'>
         <Switch defaultChecked />
