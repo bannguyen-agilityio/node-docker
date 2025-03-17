@@ -8,4 +8,5 @@ export const ROUTES = {
 
 export const SEARCH_PARAMS_KEY = {
   ERROR: 'error',
+  CALLBACK_URL: 'callbackUrl',
 };

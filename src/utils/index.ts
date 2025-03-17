@@ -3,3 +3,4 @@ export * from './fetch';
 export * from './issue';
 export * from './pagination';
 export * from './auth';
+export * from './router';

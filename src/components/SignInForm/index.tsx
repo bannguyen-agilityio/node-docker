@@ -1,28 +1,30 @@
 'use client';
 
 import { Box, Flex, Heading, Text } from '@radix-ui/themes';
-import { useSearchParams } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 
 // Utils
-import { tw, getAuthenticationErrorMessage } from '@/utils';
+import { tw, getAuthenticationErrorMessage, checkPage } from '@/utils';
 
 // Components
 import { Button } from '@/components';
 
 // Constants
-import { ROUTES, SEARCH_PARAMS_KEY } from '@/constants';
+import { SEARCH_PARAMS_KEY } from '@/constants';
+
+// Hooks
+import { useSearchParams } from '@/hooks';
 
 const SignInForm = () => {
   const searchParams = useSearchParams();
   const errorMessage = getAuthenticationErrorMessage(
-    searchParams.get(SEARCH_PARAMS_KEY.ERROR) ?? '',
+    searchParams.get(SEARCH_PARAMS_KEY.ERROR),
   );
 
   const handleSignIn = () =>
     signIn('google', {
-      callbackUrl: ROUTES.DASHBOARD,
+      callbackUrl: checkPage(searchParams.get(SEARCH_PARAMS_KEY.CALLBACK_URL)),
     });
 
   return (
