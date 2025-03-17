@@ -7,6 +7,7 @@ export const getAuthenticationErrorMessage = (errorType: string): string => {
     [errorType]: '',
     Callback: AUTH_MESSAGES.USER_HAS_NO_PERMISSION,
     AccessDenied: AUTH_MESSAGES.USER_HAS_NO_PERMISSION,
+    OAuthCallback: AUTH_MESSAGES.USER_HAS_NO_PERMISSION,
   };
 
   return errorMessage[errorType];
