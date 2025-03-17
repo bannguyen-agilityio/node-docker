@@ -7,29 +7,29 @@ import { ACCOUNT_STATUS } from '@/constants';
 import { Status } from '@/components';
 
 interface DeviceTableRowProps {
-  deviceId: number;
-  deviceName: string;
-  deviceModel: string;
-  devicePlatForm: string;
-  deviceAccountName: string;
+  id: number;
+  name: string;
+  model: string;
+  platForm: string;
+  accountName: string;
   status: keyof typeof ACCOUNT_STATUS;
 }
 
 const DeviceTableRow = ({
-  deviceId,
-  deviceName,
-  deviceModel,
-  devicePlatForm,
-  deviceAccountName,
+  id,
+  name,
+  model,
+  platForm,
+  accountName,
   status,
 }: DeviceTableRowProps) => {
   return (
     <Table.Row>
-      <Table.RowHeaderCell>{deviceId}</Table.RowHeaderCell>
-      <Table.Cell>{deviceName}</Table.Cell>
-      <Table.Cell>{deviceModel}</Table.Cell>
-      <Table.RowHeaderCell>{devicePlatForm}</Table.RowHeaderCell>
-      <Table.Cell>{deviceAccountName}</Table.Cell>
+      <Table.RowHeaderCell>{id}</Table.RowHeaderCell>
+      <Table.Cell>{name}</Table.Cell>
+      <Table.Cell>{model}</Table.Cell>
+      <Table.RowHeaderCell>{platForm}</Table.RowHeaderCell>
+      <Table.Cell>{accountName}</Table.Cell>
       <Table.Cell className='text-center'>
         <Status status={ACCOUNT_STATUS[status]} />
       </Table.Cell>

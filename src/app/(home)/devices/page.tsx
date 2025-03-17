@@ -13,6 +13,7 @@ const DevicesPage = () => {
   const totalPages: number = getPageSize({
     totalItems,
   });
+
   return (
     <PageHeading title='Devices' subTitle='Manage and control your devices'>
       <Box>

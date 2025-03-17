@@ -30,11 +30,11 @@ const DevicesTable = ({ devices }: DevicesTableProps) => {
         {devices.map((_, index) => (
           <DeviceTableRow
             key={index}
-            deviceId={1}
-            deviceName='Device 1'
-            deviceModel='IPhone 14 Pro Max'
-            devicePlatForm='Instagram'
-            deviceAccountName='user1'
+            id={1}
+            name='Device 1'
+            model='IPhone 14 Pro Max'
+            platForm='Instagram'
+            accountName='user1'
             status='active'
           />
         ))}
