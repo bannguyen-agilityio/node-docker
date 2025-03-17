@@ -1,7 +1,7 @@
 // Constants
-import { StatusType } from './enum';
+import { IssueStatus } from './enum';
 
 export const ISSUE_STATUS = {
-  banned: StatusType.BANNED,
-  failed: StatusType.FAILED,
+  banned: IssueStatus.BANNED,
+  failed: IssueStatus.FAILED,
 };

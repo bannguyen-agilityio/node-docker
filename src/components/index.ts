@@ -14,3 +14,5 @@ export { default as PageSizeSelector } from './PageSizeSelector';
 export { default as IssueReportingSkeleton } from './Skeleton/IssueReportingSkeleton';
 export { default as IssuesReporting } from './IssuesReporting';
 export { default as IssuesReportingSkeleton } from './Skeleton/IssuesReportingSkeleton';
+export { default as DevicesTable } from './DevicesTable';
+export { default as DeviceTableRow } from './DeviceTableRow';

@@ -5,7 +5,7 @@ import React from 'react';
 import { IssueReporting } from '@/components';
 
 // Constants
-import { StatusType } from '@/constants';
+import { ISSUE_STATUS } from '@/constants';
 
 interface IssueReportingProps {
   issues: unknown[]; // TODO: Will update when API ready
@@ -18,7 +18,7 @@ const IssuesReporting = ({ issues }: IssueReportingProps) => (
         key={index}
         account='@travel_photos'
         device='Iphone 14'
-        status={index % 2 === 0 ? StatusType.BANNED : StatusType.FAILED} // TODO: Will replace to status response from BE
+        status={index % 2 === 0 ? ISSUE_STATUS.banned : ISSUE_STATUS.failed} // TODO: Will replace to status response from BE
       />
     ))}
   </Flex>
