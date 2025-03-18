@@ -10,9 +10,8 @@ import {
 } from '@radix-ui/react-icons';
 import { Box, Flex, IconButton, Text } from '@radix-ui/themes';
 import Link from 'next/link';
-import React, { ReactNode, useCallback } from 'react';
+import React, { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/navigation';
 
 // Constants
 import { ROUTES } from '@/constants';
@@ -22,6 +21,7 @@ import { tw } from '@/utils';
 
 // Hooks
 import { useDisclosure } from '@/hooks';
+import { signOut } from 'next-auth/react';
 
 // TODO: Reopen when the page is available
 const navigationLinks: {
@@ -52,7 +52,6 @@ const navigationLinks: {
 ];
 
 const Sidebar = () => {
-  const router = useRouter();
   const pathname: string = usePathname();
   const {
     isOpen,
@@ -61,9 +60,10 @@ const Sidebar = () => {
   } = useDisclosure();
 
   // TODO: Implement when API ready
-  const handleSignOut = useCallback(() => {
-    router.push('/sign-in');
-  }, [router]);
+  const handleSignOut = () =>
+    signOut({
+      callbackUrl: ROUTES.SIGN_IN,
+    });
 
   return (
     <>
