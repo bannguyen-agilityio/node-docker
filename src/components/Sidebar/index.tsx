@@ -59,7 +59,6 @@ const Sidebar = () => {
     handleClose: handleCloseSidebar,
   } = useDisclosure();
 
-  // TODO: Implement when API ready
   const handleSignOut = () =>
     signOut({
       callbackUrl: ROUTES.SIGN_IN,
