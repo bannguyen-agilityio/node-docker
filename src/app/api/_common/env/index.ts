@@ -12,6 +12,11 @@ const envSchema = z.object({
   AIRTABLE_WEBHOOK_MAC_SECRET: z.string().trim().min(1),
   DB_ENDPOINT: z.string().trim().min(1),
   DB_KEY: z.string().trim().min(1),
+  GOOGLE_DIR_GROUP: z.string().trim().min(1),
+  GOOGLE_CLIENT_ID: z.string().trim().min(1),
+  GOOGLE_CLIENT_SECRET: z.string().trim().min(1),
+  GOOGLE_CREDENTIALS: z.string().trim().min(1),
+  AUTH_SECRET: z.string().trim().min(1),
 });
 
 const envParsed = envSchema.safeParse({
@@ -24,6 +29,11 @@ const envParsed = envSchema.safeParse({
   AIRTABLE_WEBHOOK_MAC_SECRET: process.env.AIRTABLE_WEBHOOK_MAC_SECRET,
   DB_ENDPOINT: process.env.DB_ENDPOINT,
   DB_KEY: process.env.DB_KEY,
+  GOOGLE_DIR_GROUP: process.env.GOOGLE_DIR_GROUP || '',
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || '',
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || '',
+  AUTH_SECRET: process.env.AUTH_SECRET || '',
+  GOOGLE_CREDENTIALS: process.env.GOOGLE_CREDENTIALS || '',
 });
 
 if (!envParsed.success) {

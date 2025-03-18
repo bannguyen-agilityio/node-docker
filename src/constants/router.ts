@@ -5,3 +5,8 @@ export const ROUTES = {
   SCHEDULE: '/schedule',
   ISSUES: '/issues',
 };
+
+export const SEARCH_PARAMS_KEY = {
+  ERROR: 'error',
+  CALLBACK_URL: 'callbackUrl',
+};

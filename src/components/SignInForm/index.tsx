@@ -1,20 +1,31 @@
 'use client';
-import { Box, Flex, Heading } from '@radix-ui/themes';
-import { useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+
+import { Box, Flex, Heading, Text } from '@radix-ui/themes';
+import { signIn } from 'next-auth/react';
+import Image from 'next/image';
 
 // Utils
-import { tw } from '@/utils/tailwind';
+import { tw, getAuthenticationErrorMessage, checkPage } from '@/utils';
 
 // Components
-import { Button } from '..';
+import { Button } from '@/components';
+
+// Constants
+import { SEARCH_PARAMS_KEY } from '@/constants';
+
+// Hooks
+import { useSearchParams } from '@/hooks';
 
 const SignInForm = () => {
-  const router = useRouter();
+  const searchParams = useSearchParams();
+  const errorMessage = getAuthenticationErrorMessage(
+    searchParams.get(SEARCH_PARAMS_KEY.ERROR),
+  );
 
-  const handleSignIn = useCallback(() => {
-    router.push('/');
-  }, [router]);
+  const handleSignIn = () =>
+    signIn('google', {
+      callbackUrl: checkPage(searchParams.get(SEARCH_PARAMS_KEY.CALLBACK_URL)),
+    });
 
   return (
     <Flex direction='column' gap='4' width='400px'>
@@ -25,12 +36,25 @@ const SignInForm = () => {
           </Heading>
         </Box>
         <Button
-          text='Sign in'
+          text='Sign in with Google'
+          icon={
+            <Image
+              src='/images/signin-google-image.svg.webp'
+              alt='Google Logo'
+              width={25}
+              height={25}
+            />
+          }
           className={tw(
             'font-regular w-full cursor-pointer border border-gray-400 bg-white py-6 text-sm text-black transition-all hover:bg-gray-100 sm:text-base',
           )}
           onClick={handleSignIn}
         />
+        {errorMessage && (
+          <Text color='red' mt='2' className='inline-block' size='2'>
+            {errorMessage}
+          </Text>
+        )}
       </div>
     </Flex>
   );
