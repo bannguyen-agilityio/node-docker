@@ -3,9 +3,9 @@
 import {
   // CalendarIcon,
   DashboardIcon,
-  ExclamationTriangleIcon,
+  // ExclamationTriangleIcon,
   ExitIcon,
-  MobileIcon,
+  // MobileIcon,
   RowsIcon,
 } from '@radix-ui/react-icons';
 import { Box, Flex, IconButton, Text } from '@radix-ui/themes';
@@ -34,21 +34,21 @@ const navigationLinks: {
     icon: <DashboardIcon />,
     href: ROUTES.DASHBOARD,
   },
-  {
-    title: 'devices',
-    icon: <MobileIcon />,
-    href: ROUTES.DEVICES,
-  },
+  // {
+  //   title: 'devices',
+  //   icon: <MobileIcon />,
+  //   href: ROUTES.DEVICES,
+  // },
   // {
   //   title: 'schedule',
   //   icon: <CalendarIcon />,
   //   href: ROUTES.SCHEDULE,
   // },
-  {
-    title: 'issues',
-    icon: <ExclamationTriangleIcon />,
-    href: ROUTES.ISSUES,
-  },
+  // {
+  //   title: 'issues',
+  //   icon: <ExclamationTriangleIcon />,
+  //   href: ROUTES.ISSUES,
+  // },
 ];
 
 const Sidebar = () => {

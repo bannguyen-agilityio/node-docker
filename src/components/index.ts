@@ -16,3 +16,5 @@ export { default as IssuesReporting } from './IssuesReporting';
 export { default as IssuesReportingSkeleton } from './Skeleton/IssuesReportingSkeleton';
 export { default as DevicesTable } from './DevicesTable';
 export { default as DeviceTableRow } from './DeviceTableRow';
+export { default as DeviceTableRowSkeleton } from './Skeleton/SkeletonDeviceTableRow';
+export { default as DevicesTableSkeleton } from './Skeleton/SkeletonDevicesTable';
