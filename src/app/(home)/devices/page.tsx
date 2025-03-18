@@ -7,6 +7,8 @@ import { DevicesTable, PageHeading, Pagination } from '@/components';
 // Utils
 import { getPageSize } from '@/utils';
 
+export const dynamic = 'force-dynamic';
+
 const DevicesPage = () => {
   const totalItems: number = 100;
   const devices = Array.from({ length: 20 });
