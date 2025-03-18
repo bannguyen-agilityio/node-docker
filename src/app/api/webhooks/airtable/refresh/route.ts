@@ -1,13 +1,11 @@
 import { ApiHandler } from '@api/_common/types';
 import { apiHandler } from '@api/_common/handlers';
 import { sendSuccessResponse } from '@api/_common/response';
-import { ContainerIds, getContainer } from '@api/_common/db';
 
 import { refreshAirtableWebhook } from '../../service';
 
 const refreshAirtableWebhookHandler: ApiHandler = async (req) => {
-  const settingsContainer = await getContainer(ContainerIds.SETTINGS);
-  const result = await refreshAirtableWebhook(settingsContainer);
+  const result = await refreshAirtableWebhook();
 
   return sendSuccessResponse(req, 200, result);
 };

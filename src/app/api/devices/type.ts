@@ -4,7 +4,7 @@ import {
   getDeviceResponseSchema,
   createDeviceRequestSchema,
   createDeviceResponseSchema,
-} from './_schema';
+} from './schema';
 
 export type GetDeviceResponse = z.infer<typeof getDeviceResponseSchema>;
 
