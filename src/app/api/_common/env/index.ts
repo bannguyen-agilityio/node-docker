@@ -1,6 +1,6 @@
 import z from 'zod';
 
-import { logError } from '../logger';
+import { logWarn } from '../logger';
 
 const envSchema = z.object({
   IS_DEBUGGING: z.string().optional(),
@@ -27,10 +27,8 @@ const envParsed = envSchema.safeParse({
 });
 
 if (!envParsed.success) {
-  const error = envParsed.error;
-  logError('Invalid environment variables', { meta: error });
-
-  throw error;
+  const error = envParsed.error.message;
+  logWarn('Invalid environment variables', { meta: error });
 }
 
-export const API_ENV = envParsed.data;
+export const API_ENV = envParsed.data || ({} as z.infer<typeof envSchema>);

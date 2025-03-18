@@ -10,8 +10,7 @@ import { ContainerIds, DATABASE_ID, PARTITION_KEYS } from './constants';
 
 const { DB_ENDPOINT, DB_KEY } = API_ENV;
 
-// Create Cosmos client
-const client = new CosmosClient({ endpoint: DB_ENDPOINT, key: DB_KEY });
+let client: CosmosClient;
 
 /**
  * Get a Cosmos container
@@ -22,6 +21,11 @@ export const getDBContainer = async (
   containerId: ContainerIds,
   options: ContainerDefinition = {},
 ) => {
+  if (!client) {
+    // Create Cosmos client
+    client = new CosmosClient({ endpoint: DB_ENDPOINT, key: DB_KEY });
+  }
+
   // Create a database if it doesn't exist
   const { database } = await client.databases.createIfNotExists({
     id: DATABASE_ID,
