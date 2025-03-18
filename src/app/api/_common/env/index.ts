@@ -29,11 +29,11 @@ const envParsed = envSchema.safeParse({
   AIRTABLE_WEBHOOK_MAC_SECRET: process.env.AIRTABLE_WEBHOOK_MAC_SECRET,
   DB_ENDPOINT: process.env.DB_ENDPOINT,
   DB_KEY: process.env.DB_KEY,
-  GOOGLE_DIR_GROUP: process.env.GOOGLE_DIR_GROUP,
-  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-  AUTH_SECRET: process.env.AUTH_SECRET,
-  GOOGLE_CREDENTIALS: process.env.GOOGLE_CREDENTIALS,
+  GOOGLE_DIR_GROUP: process.env.GOOGLE_DIR_GROUP || '',
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || '',
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || '',
+  AUTH_SECRET: process.env.AUTH_SECRET || '',
+  GOOGLE_CREDENTIALS: process.env.GOOGLE_CREDENTIALS || '',
 });
 
 if (!envParsed.success) {

@@ -37,5 +37,5 @@ export const middleware = async (req: NextRequest, event: NextFetchEvent) => {
 };
 
 export const config: MiddlewareConfig = {
-  matcher: Object.values(ROUTES),
+  matcher: '/((?!api|_next/static|_next/image|images).*)',
 };
