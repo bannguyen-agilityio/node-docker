@@ -1,15 +1,20 @@
-import { Container } from '@azure/cosmos';
-
 import { API_ENV } from '@api/_common/env';
 import { logError, logInfo } from '@api/_common/logger';
-import { GLOBAL_SETTING_ID } from '@api/_common/db';
+import {
+  ContainerIds,
+  getDBContainer,
+  GetDbContainerType,
+  GLOBAL_SETTING_ID,
+} from '@api/_common/db';
 
 import { SystemSetting } from './type';
 
 const { AIRTABLE_WEBHOOK_URL, AIRTABLE_API_KEY, AIRTABLE_NOTIFICATION_URL } =
   API_ENV;
 
-export const createAirtableWebhook = async (settingsContainer: Container) => {
+export const createAirtableWebhook = async (
+  getContainer: GetDbContainerType = getDBContainer,
+) => {
   logInfo('Creating Airtable webhook');
 
   const data = {
@@ -24,6 +29,8 @@ export const createAirtableWebhook = async (settingsContainer: Container) => {
   };
 
   try {
+    const settingsContainer = await getContainer(ContainerIds.SETTINGS);
+
     const { resource } = await settingsContainer
       .item(GLOBAL_SETTING_ID, GLOBAL_SETTING_ID)
       .read<SystemSetting>();
@@ -80,10 +87,14 @@ export const createAirtableWebhook = async (settingsContainer: Container) => {
   }
 };
 
-export const refreshAirtableWebhook = async (settingsContainer: Container) => {
+export const refreshAirtableWebhook = async (
+  getContainer: GetDbContainerType = getDBContainer,
+) => {
   logInfo('Refreshing Airtable webhook');
 
   try {
+    const settingsContainer = await getContainer(ContainerIds.SETTINGS);
+
     const { resource } = await settingsContainer
       .item(GLOBAL_SETTING_ID, GLOBAL_SETTING_ID)
       .read<SystemSetting>();

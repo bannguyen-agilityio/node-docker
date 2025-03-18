@@ -1,4 +1,9 @@
-import { ContainerDefinition, CosmosClient } from '@azure/cosmos';
+import {
+  ContainerDefinition,
+  CosmosClient,
+  PartitionKeyDefinitionVersion,
+  PartitionKeyKind,
+} from '@azure/cosmos';
 
 import { API_ENV } from '../env';
 import { ContainerIds, DATABASE_ID, PARTITION_KEYS } from './constants';
@@ -13,7 +18,7 @@ const client = new CosmosClient({ endpoint: DB_ENDPOINT, key: DB_KEY });
  * @param containerId The ID of the container to create or retrieve
  * @returns The Cosmos container
  */
-export const getContainer = async (
+export const getDBContainer = async (
   containerId: ContainerIds,
   options: ContainerDefinition = {},
 ) => {
@@ -28,6 +33,11 @@ export const getContainer = async (
     id: containerId,
     partitionKey: {
       paths: partitionKey,
+      version: PartitionKeyDefinitionVersion.V2,
+      kind:
+        partitionKey.length > 1
+          ? PartitionKeyKind.MultiHash
+          : PartitionKeyKind.Hash,
     },
     ...options,
   };

@@ -5,8 +5,8 @@ import {
 } from '@api/_common/response';
 import { logInfo } from '@api/_common/logger';
 import { ApiHandler, PaginationMeta } from '@api/_common/types';
-import { CreateDeviceResponse, GetDeviceResponse } from './_type';
-import { createDeviceRequestSchema } from './_schema';
+import { CreateDeviceResponse, GetDeviceResponse } from './type';
+import { createDeviceRequestSchema } from './schema';
 
 const getDevicesHandler: ApiHandler = async (req) => {
   logInfo('Get Devices', { req });
