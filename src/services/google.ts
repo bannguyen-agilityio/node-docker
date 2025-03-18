@@ -1,35 +1,34 @@
-import { admin_directory_v1, google } from 'googleapis';
+import { google } from 'googleapis';
 
 // Constants
-import { EMAIL_DOMAIN, GOOGLE_ADMIN_DIR } from '@/constants';
+import { GOOGLE_ADMIN_DIR } from '@/constants';
+
+// Envs
+import { API_ENV } from '@/app/api/_common/env';
 
 const getAuth = () => {
-  const serviceAccount = JSON.parse(process.env.GOOGLE_CREDENTIALS || '');
+  const serviceAccount = JSON.parse(API_ENV.GOOGLE_CREDENTIALS);
 
   const auth = new google.auth.GoogleAuth({
     credentials: serviceAccount,
-    scopes: [
-      process.env.GOOGLE_DIR_GROUP ?? '',
-      process.env.GOOGLE_DIR_USER ?? '',
-    ],
+    scopes: [API_ENV.GOOGLE_DIR_GROUP],
   });
 
   return auth;
 };
 
-export const fetchGroupsByEmail = async (
+export const checkEmailInGroup = async (
   email: string,
-): Promise<admin_directory_v1.Schema$Group[]> => {
+  group: string,
+): Promise<boolean> => {
   const auth = getAuth();
   const admin = google.admin(GOOGLE_ADMIN_DIR);
-  const {
-    data: { groups = [] },
-  } = await admin.groups.list({
+
+  const res = await admin.members.hasMember({
     auth,
-    domain: EMAIL_DOMAIN,
-    userKey: email,
-    maxResults: 100,
+    groupKey: group,
+    memberKey: email,
   });
 
-  return groups;
+  return !!res.data?.isMember;
 };

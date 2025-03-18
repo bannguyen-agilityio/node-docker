@@ -1,5 +1,6 @@
 export const GENERAL_MESSAGES = {
   NO_ISSUES: 'No issues yet.',
+  SOMETHING_WENT_WRONG: 'Something went wrong.',
 };
 
 export const AUTH_MESSAGES = {

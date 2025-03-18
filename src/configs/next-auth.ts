@@ -2,13 +2,16 @@ import { CallbacksOptions, NextAuthOptions, Profile } from 'next-auth';
 import Google from 'next-auth/providers/google';
 
 // Constants
-import { ROUTES } from '@/constants';
+import { ROUTES, AUTHORIZED_GROUPS } from '@/constants';
 
 // Utils
-import { checkGroupAccess, verifyEmailDomain } from '@/utils';
+import { verifyEmailDomain } from '@/utils';
 
 // Services
-import { fetchGroupsByEmail } from '@/services';
+import { checkEmailInGroup } from '@/services';
+
+// Envs
+import { API_ENV } from '@/app/api/_common/env';
 
 interface SignInCallbackParameters
   extends Omit<Parameters<CallbacksOptions['signIn']>[0], 'profile'> {
@@ -18,8 +21,8 @@ interface SignInCallbackParameters
 export const authOptions: NextAuthOptions = {
   providers: [
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
+      clientId: API_ENV.GOOGLE_CLIENT_ID,
+      clientSecret: API_ENV.GOOGLE_CLIENT_SECRET,
     }),
   ],
   pages: {
@@ -31,16 +34,14 @@ export const authOptions: NextAuthOptions = {
       account,
       profile,
     }: SignInCallbackParameters): Promise<boolean> => {
-      if (account?.provider === 'google') {
-        const email: string = profile?.email ?? '';
+      const email: string = profile?.email ?? '';
+      const isGoogleProvider: boolean = account?.provider === 'google';
+      const isValidEmail: boolean = !!(
+        profile?.email_verified && verifyEmailDomain(email)
+      );
 
-        if (!(profile?.email_verified && verifyEmailDomain(email))) {
-          return false;
-        }
-
-        const groups = await fetchGroupsByEmail(email);
-
-        return groups.some(({ email }) => checkGroupAccess(email ?? ''));
+      if (isGoogleProvider && isValidEmail) {
+        return await checkEmailInGroup(email, AUTHORIZED_GROUPS[0]);
       }
 
       return false;
