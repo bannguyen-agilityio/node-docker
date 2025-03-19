@@ -118,6 +118,9 @@ const Sidebar = () => {
               variant='outline'
               className={tw(
                 'w-full cursor-pointer justify-start py-5 text-base text-[var(--gray-12)]',
+                {
+                  'opacity-55': isSubmitting,
+                },
               )}
               role='button'
               onClick={handleSignOut}
