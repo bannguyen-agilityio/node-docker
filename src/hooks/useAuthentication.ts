@@ -19,22 +19,30 @@ export const useAuthentication = () => {
 
   const handleSignIn = useCallback(async () => {
     setIsSubmitting(true);
-    const res = await signIn('google', {
-      callbackUrl: checkPage(searchParams.get(SEARCH_PARAMS_KEY.CALLBACK_URL)),
-    });
 
-    if (res) {
+    try {
+      await signIn('google', {
+        callbackUrl: checkPage(
+          searchParams.get(SEARCH_PARAMS_KEY.CALLBACK_URL),
+        ),
+      });
+    } catch (error) {
+      console.error('Sign-in error:', error);
+    } finally {
       setIsSubmitting(false);
     }
   }, [searchParams]);
 
   const handleSignOut = useCallback(async () => {
     setIsSubmitting(true);
-    const res = await signOut({
-      callbackUrl: ROUTES.SIGN_IN,
-    });
 
-    if (res) {
+    try {
+      await signOut({
+        callbackUrl: ROUTES.SIGN_IN,
+      });
+    } catch (error) {
+      console.error('Sign-in error:', error);
+    } finally {
       setIsSubmitting(false);
     }
   }, []);

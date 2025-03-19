@@ -8,7 +8,7 @@ import {
   // MobileIcon,
   RowsIcon,
 } from '@radix-ui/react-icons';
-import { Box, Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
+import { Box, Button, Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
@@ -112,16 +112,15 @@ const Sidebar = () => {
             })}
           </ul>
           <Box className='p-5'>
-            <Flex
+            <Button
+              disabled={isSubmitting}
+              color='gray'
+              variant='outline'
               className={tw(
-                'w-full cursor-pointer gap-3 rounded-lg border-[1px] border-[var(--gray-6)] px-3 py-2 text-left font-semibold hover:bg-[var(--accent-2)]',
-                { 'opacity-50': isSubmitting },
+                'w-full cursor-pointer justify-start py-5 text-base',
               )}
               role='button'
-              align='center'
-              {...(!isSubmitting && {
-                onClick: handleSignOut,
-              })}
+              onClick={handleSignOut}
             >
               <Flex align='center' gap='3'>
                 {isSubmitting ? (
@@ -133,7 +132,7 @@ const Sidebar = () => {
                 )}
               </Flex>
               <Text className='capitalize'>Sign out</Text>
-            </Flex>
+            </Button>
           </Box>
         </aside>
       </Box>
