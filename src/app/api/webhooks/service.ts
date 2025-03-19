@@ -1,4 +1,4 @@
-import { API_ENV } from '@api/_common/env';
+import { getApiEnv } from '@api/_common/env';
 import { logError, logInfo } from '@api/_common/logger';
 import {
   ContainerIds,
@@ -9,13 +9,13 @@ import {
 
 import { SystemSetting } from './type';
 
-const { AIRTABLE_WEBHOOK_URL, AIRTABLE_API_KEY, AIRTABLE_NOTIFICATION_URL } =
-  API_ENV;
-
 export const createAirtableWebhook = async (
   getContainer: GetDbContainerType = getDBContainer,
 ) => {
   logInfo('Creating Airtable webhook');
+
+  const { AIRTABLE_WEBHOOK_URL, AIRTABLE_API_KEY, AIRTABLE_NOTIFICATION_URL } =
+    getApiEnv();
 
   const data = {
     notificationUrl: AIRTABLE_NOTIFICATION_URL,
@@ -91,6 +91,8 @@ export const refreshAirtableWebhook = async (
   getContainer: GetDbContainerType = getDBContainer,
 ) => {
   logInfo('Refreshing Airtable webhook');
+
+  const { AIRTABLE_WEBHOOK_URL, AIRTABLE_API_KEY } = getApiEnv();
 
   try {
     const settingsContainer = await getContainer(ContainerIds.SETTINGS);
