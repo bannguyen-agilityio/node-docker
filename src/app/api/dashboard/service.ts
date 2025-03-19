@@ -104,13 +104,15 @@ export const getIssuesPerDay = async (
   }
 };
 
-export const getRecentIssues = async (issuesContainer: Container) => {
+export const getRecentIssues = async (
+  issuesContainer: Container,
+): Promise<GetDashboardOverviewResponse['recentIssues']> => {
   logInfo('Getting recent issues');
 
   // Query for top 5 recent issues, only selecting necessary columns
   const querySpec = {
     query: `
-      SELECT TOP 5 i.id, i.createdAt, i.type, i.instagramAccount
+      SELECT TOP 5 i.id, i.createdAt, i.type, i.instagramAccount, i.instagramAccountName
       FROM Issues i
       ORDER BY i.createdAt DESC
     `,
