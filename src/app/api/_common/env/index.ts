@@ -1,6 +1,6 @@
 import z from 'zod';
 
-import { logWarn } from '../logger';
+import { logError } from '../logger';
 
 const envSchema = z.object({
   IS_DEBUGGING: z.string().optional(),
@@ -19,26 +19,38 @@ const envSchema = z.object({
   AUTH_SECRET: z.string().trim().min(1),
 });
 
-const envParsed = envSchema.safeParse({
-  IS_DEBUGGING: process.env.IS_DEBUGGING,
-  AIRTABLE_API_KEY: process.env.AIRTABLE_API_KEY,
-  AIRTABLE_WEBHOOK_URL: process.env.AIRTABLE_WEBHOOK_URL,
-  AIRTABLE_BASE_ID: process.env.AIRTABLE_BASE_ID,
-  AIRTABLE_POSTS_TABLE_NAME: process.env.AIRTABLE_POSTS_TABLE_NAME,
-  AIRTABLE_NOTIFICATION_URL: process.env.AIRTABLE_NOTIFICATION_URL,
-  AIRTABLE_WEBHOOK_MAC_SECRET: process.env.AIRTABLE_WEBHOOK_MAC_SECRET,
-  DB_ENDPOINT: process.env.DB_ENDPOINT,
-  DB_KEY: process.env.DB_KEY,
-  GOOGLE_DIR_GROUP: process.env.GOOGLE_DIR_GROUP || '',
-  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || '',
-  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || '',
-  AUTH_SECRET: process.env.AUTH_SECRET || '',
-  GOOGLE_CREDENTIALS: process.env.GOOGLE_CREDENTIALS || '',
-});
+let apiEnv: z.infer<typeof envSchema>;
 
-if (!envParsed.success) {
-  const error = envParsed.error.message;
-  logWarn('Invalid environment variables', { meta: error });
-}
+export const getApiEnv = () => {
+  if (apiEnv) {
+    return apiEnv;
+  }
 
-export const API_ENV = envParsed.data || ({} as z.infer<typeof envSchema>);
+  const envParsed = envSchema.safeParse({
+    IS_DEBUGGING: process.env.IS_DEBUGGING,
+    AIRTABLE_API_KEY: process.env.AIRTABLE_API_KEY,
+    AIRTABLE_WEBHOOK_URL: process.env.AIRTABLE_WEBHOOK_URL,
+    AIRTABLE_BASE_ID: process.env.AIRTABLE_BASE_ID,
+    AIRTABLE_POSTS_TABLE_NAME: process.env.AIRTABLE_POSTS_TABLE_NAME,
+    AIRTABLE_NOTIFICATION_URL: process.env.AIRTABLE_NOTIFICATION_URL,
+    AIRTABLE_WEBHOOK_MAC_SECRET: process.env.AIRTABLE_WEBHOOK_MAC_SECRET,
+    DB_ENDPOINT: process.env.DB_ENDPOINT,
+    DB_KEY: process.env.DB_KEY,
+    GOOGLE_DIR_GROUP: process.env.GOOGLE_DIR_GROUP,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    AUTH_SECRET: process.env.AUTH_SECRET,
+    GOOGLE_CREDENTIALS: process.env.GOOGLE_CREDENTIALS,
+  });
+
+  if (!envParsed.success) {
+    const error = envParsed.error.message;
+    logError('Invalid environment variables', { meta: error });
+
+    throw error;
+  }
+
+  apiEnv = envParsed.data;
+
+  return apiEnv;
+};

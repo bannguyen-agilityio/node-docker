@@ -3,15 +3,12 @@ import { google } from 'googleapis';
 // Constants
 import { GOOGLE_ADMIN_DIR } from '@/constants';
 
-// Envs
-import { API_ENV } from '@/app/api/_common/env';
-
 const getAuth = () => {
-  const serviceAccount = JSON.parse(API_ENV.GOOGLE_CREDENTIALS);
+  const serviceAccount = JSON.parse(process.env.GOOGLE_CREDENTIALS!);
 
   const auth = new google.auth.GoogleAuth({
     credentials: serviceAccount,
-    scopes: [API_ENV.GOOGLE_DIR_GROUP],
+    scopes: [process.env.GOOGLE_DIR_GROUP!],
   });
 
   return auth;

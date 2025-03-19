@@ -10,9 +10,6 @@ import { verifyEmailDomain } from '@/utils';
 // Services
 import { checkEmailInGroup } from '@/services';
 
-// Envs
-import { API_ENV } from '@/app/api/_common/env';
-
 interface SignInCallbackParameters
   extends Omit<Parameters<CallbacksOptions['signIn']>[0], 'profile'> {
   profile?: Profile & Partial<Record<'email_verified' | 'email', string>>;
@@ -21,8 +18,8 @@ interface SignInCallbackParameters
 export const authOptions: NextAuthOptions = {
   providers: [
     Google({
-      clientId: API_ENV.GOOGLE_CLIENT_ID,
-      clientSecret: API_ENV.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   pages: {

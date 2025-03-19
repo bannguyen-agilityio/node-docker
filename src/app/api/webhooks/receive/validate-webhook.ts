@@ -1,7 +1,7 @@
 import { createHmac } from 'crypto';
 
 import { ApiMiddleware } from '@api/_common/types';
-import { API_ENV } from '@api/_common/env';
+import { getApiEnv } from '@api/_common/env';
 import { ApiError } from 'next/dist/server/api-utils';
 
 import { sendErrorResponse } from '../../_common/response';
@@ -11,7 +11,7 @@ export const validateMacSecretWebhook: ApiMiddleware = (handler) => {
     const { headers } = req;
     const headerHmac = headers.get('X-Airtable-Content-MAC');
 
-    const { AIRTABLE_WEBHOOK_MAC_SECRET } = API_ENV;
+    const { AIRTABLE_WEBHOOK_MAC_SECRET } = getApiEnv();
     const macSecretDecoded = Buffer.from(AIRTABLE_WEBHOOK_MAC_SECRET, 'base64');
 
     // Parse the body

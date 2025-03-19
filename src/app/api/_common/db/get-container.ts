@@ -5,10 +5,8 @@ import {
   PartitionKeyKind,
 } from '@azure/cosmos';
 
-import { API_ENV } from '../env';
+import { getApiEnv } from '../env';
 import { ContainerIds, DATABASE_ID, PARTITION_KEYS } from './constants';
-
-const { DB_ENDPOINT, DB_KEY } = API_ENV;
 
 let client: CosmosClient;
 
@@ -22,6 +20,8 @@ export const getDBContainer = async (
   options: ContainerDefinition = {},
 ) => {
   if (!client) {
+    const { DB_ENDPOINT, DB_KEY } = getApiEnv();
+
     // Create Cosmos client
     client = new CosmosClient({ endpoint: DB_ENDPOINT, key: DB_KEY });
   }
