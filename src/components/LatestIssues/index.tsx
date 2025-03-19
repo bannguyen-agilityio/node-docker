@@ -6,11 +6,19 @@ import Link from 'next/link';
 import { Status } from '@/components';
 
 // Constants
-import { ROUTES, StatusType } from '@/constants';
+import { ISSUE_STATUS, ROUTES } from '@/constants';
 
-// TODO: This is the mock value, and it will be updated dynamically later
-const LatestIssues = () => {
-  const issues = Array.from({ length: 5 });
+// Types
+import { DashBoardOverview } from '@/interfaces';
+
+// Utils
+import { getIssueDetails } from '@/utils';
+
+interface LatestIssuesProps {
+  issues: DashBoardOverview['recentIssues'];
+}
+
+const LatestIssues = ({ issues }: LatestIssuesProps) => {
   const isNoIssues: boolean = !issues.length;
 
   return (
@@ -32,8 +40,12 @@ const LatestIssues = () => {
 
       {!isNoIssues ? (
         <ul className='mt-5 flex flex-col gap-5'>
-          {issues.map((_, index) => {
-            const isBanned: boolean = index % 2 === 0;
+          {issues.map(({ type, instagramAccount, createdAt }, index) => {
+            const { message, time } = getIssueDetails({
+              account: instagramAccount,
+              status: type,
+              time: new Date(createdAt),
+            });
 
             return (
               <li key={index}>
@@ -42,18 +54,18 @@ const LatestIssues = () => {
                     <Box className='w-24'>
                       <Status
                         className='md:text-md inline-block w-full text-center text-sm'
-                        status={
-                          isBanned ? StatusType.BANNED : StatusType.FAILED
-                        }
+                        status={ISSUE_STATUS[type]}
                       />
                     </Box>
-                    <Text className='line-clamp-1 flex-1 font-semibold'>{`The account @accountname ${isBanned ? 'has been banned by Instagram.' : 'has failed to post content.'}`}</Text>
+                    <Text className='line-clamp-1 flex-1 font-semibold'>
+                      {message}
+                    </Text>
                   </Flex>
                   <Text
                     as='span'
                     className='md:text-md text-sm text-[var(--gray-11)]'
                   >
-                    2 hours ago
+                    {time}
                   </Text>
                 </Flex>
               </li>

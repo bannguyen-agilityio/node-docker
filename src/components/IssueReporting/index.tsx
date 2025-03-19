@@ -6,7 +6,7 @@ import { Box, Flex, Heading, Text } from '@radix-ui/themes';
 import React, { ReactNode } from 'react';
 
 // Constants
-import { ISSUE_STATUS, IssueStatus, MediaPlatform } from '@/constants';
+import { IssueStatus, MediaPlatform } from '@/constants';
 
 // Components
 import { Status } from '@/components';
@@ -22,11 +22,11 @@ interface IssueReportingProps {
   mediaPlatform?: MediaPlatform.INSTAGRAM;
 }
 
-const icons: Record<keyof typeof ISSUE_STATUS, ReactNode> = {
-  banned: (
+const icons: Record<IssueStatus, ReactNode> = {
+  [IssueStatus.BANNED]: (
     <ExclamationTriangleIcon className='text-red-500' width={22} height={22} />
   ),
-  failed: (
+  [IssueStatus.FAILED]: (
     <CrossCircledIcon className='text-yellow-500' width={22} height={22} />
   ),
 };
