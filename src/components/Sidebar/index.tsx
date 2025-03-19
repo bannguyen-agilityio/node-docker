@@ -8,7 +8,7 @@ import {
   // MobileIcon,
   RowsIcon,
 } from '@radix-ui/react-icons';
-import { Box, Flex, IconButton, Text } from '@radix-ui/themes';
+import { Box, Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
@@ -20,8 +20,7 @@ import { ROUTES } from '@/constants';
 import { tw } from '@/utils';
 
 // Hooks
-import { useDisclosure } from '@/hooks';
-import { signOut } from 'next-auth/react';
+import { useAuthentication, useDisclosure } from '@/hooks';
 
 // TODO: Reopen when the page is available
 const navigationLinks: {
@@ -58,11 +57,7 @@ const Sidebar = () => {
     handleOpen: handleOpenSidebar,
     handleClose: handleCloseSidebar,
   } = useDisclosure();
-
-  const handleSignOut = () =>
-    signOut({
-      callbackUrl: ROUTES.SIGN_IN,
-    });
+  const { isSubmitting, handleSignOut } = useAuthentication();
 
   return (
     <>
@@ -118,14 +113,25 @@ const Sidebar = () => {
           </ul>
           <Box className='p-5'>
             <Flex
-              className='w-full cursor-pointer gap-3 rounded-lg border-[1px] border-[var(--gray-6)] px-3 py-2 text-left font-semibold hover:bg-[var(--accent-2)]'
+              className={tw(
+                'w-full cursor-pointer gap-3 rounded-lg border-[1px] border-[var(--gray-6)] px-3 py-2 text-left font-semibold hover:bg-[var(--accent-2)]',
+                { 'opacity-50': isSubmitting },
+              )}
               role='button'
               align='center'
-              onClick={handleSignOut}
+              {...(!isSubmitting && {
+                onClick: handleSignOut,
+              })}
             >
-              <Text as='span'>
-                <ExitIcon />
-              </Text>
+              <Flex align='center' gap='3'>
+                {isSubmitting ? (
+                  <Spinner size='3' />
+                ) : (
+                  <Text as='span'>
+                    <ExitIcon />
+                  </Text>
+                )}
+              </Flex>
               <Text className='capitalize'>Sign out</Text>
             </Flex>
           </Box>

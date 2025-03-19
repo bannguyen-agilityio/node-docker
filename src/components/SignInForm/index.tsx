@@ -1,31 +1,19 @@
 'use client';
 
-import { Box, Flex, Heading, Text } from '@radix-ui/themes';
-import { signIn } from 'next-auth/react';
+import { Box, Flex, Heading, Spinner, Text } from '@radix-ui/themes';
 import Image from 'next/image';
 
 // Utils
-import { tw, getAuthenticationErrorMessage, checkPage } from '@/utils';
+import { tw } from '@/utils';
 
 // Components
 import { Button } from '@/components';
 
-// Constants
-import { SEARCH_PARAMS_KEY } from '@/constants';
-
 // Hooks
-import { useSearchParams } from '@/hooks';
+import { useAuthentication } from '@/hooks';
 
 const SignInForm = () => {
-  const searchParams = useSearchParams();
-  const errorMessage = getAuthenticationErrorMessage(
-    searchParams.get(SEARCH_PARAMS_KEY.ERROR),
-  );
-
-  const handleSignIn = () =>
-    signIn('google', {
-      callbackUrl: checkPage(searchParams.get(SEARCH_PARAMS_KEY.CALLBACK_URL)),
-    });
+  const { errorMessage, isSubmitting, handleSignIn } = useAuthentication();
 
   return (
     <Flex direction='column' gap='4' width='400px'>
@@ -36,14 +24,21 @@ const SignInForm = () => {
           </Heading>
         </Box>
         <Button
+          isDisable={isSubmitting}
           text='Sign in with Google'
           icon={
-            <Image
-              src='/images/signin-google-image.svg.webp'
-              alt='Google Logo'
-              width={25}
-              height={25}
-            />
+            <Flex align='center' gap='3'>
+              {isSubmitting ? (
+                <Spinner size='3' />
+              ) : (
+                <Image
+                  src='/images/signin-google-image.svg.webp'
+                  alt='Google Logo'
+                  width={25}
+                  height={25}
+                />
+              )}
+            </Flex>
           }
           className={tw(
             'font-regular w-full cursor-pointer border border-gray-400 bg-white py-6 text-sm text-black transition-all hover:bg-gray-100 sm:text-base',

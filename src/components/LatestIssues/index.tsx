@@ -42,9 +42,9 @@ const LatestIssues = ({ issues }: LatestIssuesProps) => {
 
       {!isNoIssues ? (
         <ul className='mt-5 flex flex-col gap-5'>
-          {issues.map(({ type, instagramAccount, createdAt }, index) => {
+          {issues.map(({ type, instagramAccountName, createdAt }, index) => {
             const { message, time } = getIssueDetails({
-              account: instagramAccount,
+              account: instagramAccountName,
               status: type,
               time: new Date(createdAt),
             });
