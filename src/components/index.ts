@@ -18,3 +18,5 @@ export { default as DevicesTable } from './DevicesTable';
 export { default as DeviceTableRow } from './DeviceTableRow';
 export { default as DeviceTableRowSkeleton } from './Skeleton/SkeletonDeviceTableRow';
 export { default as DevicesTableSkeleton } from './Skeleton/SkeletonDevicesTable';
+export { default as DashBoardCardInfo } from './DashBoardCardInfo';
+export { default as DashboardRecentIssues } from './DashboardRecentIssues';

@@ -34,6 +34,6 @@ export const enum AccountStatus {
 }
 
 export const enum IssueStatus {
-  BANNED = StatusType.BANNED,
-  FAILED = StatusType.FAILED,
+  BANNED = 'account_banned',
+  FAILED = 'post_failed',
 }
