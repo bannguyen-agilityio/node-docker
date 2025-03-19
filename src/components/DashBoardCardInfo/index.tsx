@@ -27,7 +27,7 @@ const DashBoardCardInfo = async () => {
         highlightText='per day'
         value={bannedAccounts + failedPosts}
         icon={<ExclamationTriangleIcon width='20' height='20' />}
-        description={`${bannedAccounts} ${pluralize(bannedAccounts, 'banned account', 'banned accounts')}, ${failedPosts} ${pluralize(bannedAccounts, 'failed post', 'failed posts')}`}
+        description={`${bannedAccounts} ${pluralize(bannedAccounts, 'banned account', 'banned accounts')}, ${failedPosts} ${pluralize(failedPosts, 'failed post', 'failed posts')}`}
       />
     </Grid>
   );
