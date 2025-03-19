@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Status } from '@/components';
 
 // Constants
-import { ISSUE_STATUS, ROUTES } from '@/constants';
+import { ISSUE_STATUS } from '@/constants';
 
 // Types
 import { DashBoardOverview } from '@/interfaces';
@@ -28,7 +28,9 @@ const LatestIssues = ({ issues }: LatestIssuesProps) => {
           Recent Issues
         </Heading>
         <Link
-          href={ROUTES.ISSUES}
+          // Uncomment when issues page ready
+          // href={ROUTES.ISSUES}
+          href='#'
           className='text-sm text-[var(--accent-11)] capitalize'
         >
           View more
