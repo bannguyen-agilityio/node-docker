@@ -10,6 +10,8 @@ export const getDashboardOverviewResponseSchema = z.object({
     z.object({
       type: z.string(),
       description: z.string(),
+      instagramAccount: z.string(),
+      instagramAccountName: z.string(),
       createdAt: z.string(),
     }),
   ),
