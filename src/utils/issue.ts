@@ -24,7 +24,7 @@ export const getIssueDetails = ({
   > = {
     [IssueStatus.BANNED]: {
       title: `${mediaPlatform} Account Banned`,
-      message: `The account ${account} banned by ${mediaPlatform}.`,
+      message: `The account ${account} has been banned by ${mediaPlatform}.`,
     },
     [IssueStatus.FAILED]: {
       title: 'Failed to Post Content',

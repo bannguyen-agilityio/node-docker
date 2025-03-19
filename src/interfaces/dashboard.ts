@@ -12,5 +12,6 @@ export interface DashBoardOverview {
     createdAt: string;
     type: IssueStatus;
     instagramAccount: string;
+    instagramAccountName: string;
   }[];
 }
