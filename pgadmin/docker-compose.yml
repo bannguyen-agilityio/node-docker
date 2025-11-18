@@ -1,7 +1,6 @@
 version: '3.9'
 
 services:
-
   postgres:
     image: postgres:17.4
     restart: unless-stopped
@@ -12,11 +11,11 @@ services:
     ports:
       - 5433:5432
     extra_hosts:
-      - "host.docker.internal:host-gateway" # 172.17.0.1
+      - 'host.docker.internal:host-gateway' # 172.17.0.1
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: abcd@1234
-      POSTGRES_DB: dev
+      POSTGRES_DB: localdb
       PGDATA: /data/postgres
 
   pgadmin:
@@ -29,13 +28,12 @@ services:
     ports:
       - 8080:80
     extra_hosts:
-      - "host.docker.internal:host-gateway" # 172.17.0.1
+      - 'host.docker.internal:host-gateway' # 172.17.0.1
     volumes:
       - pgadmin:/var/lib/pgadmin
 
 volumes:
   postgres:
   pgadmin:
-
 # pgAdmin accessing host: postgres, port 5432
 # Ouside docker accessing host: localhost, port 5433
